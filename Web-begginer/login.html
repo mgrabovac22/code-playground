@@ -33,6 +33,24 @@
             background-color:maroon;
             font-size:3vh;
         }
+        #Login{
+           padding-left: 45vh;
+           padding-top: 15vh;
+           padding-bottom: 20vh;
+          border-style: solid;
+          margin-right: 38vh;
+          margin-left:34vh;
+          margin-top: 10vh;
+
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        #copyright{
+            margin-left: 81vh;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +74,31 @@
         </div>
     </header>
     <hr>
+    <main>
+
+        <div id="Login">
+            <form class="Login"style="font-size: large;">
+                <div class="container">
+                    <label for="email" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Email</b></label>
+                    <input type="text" placeholder="Enter email" name="email" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
+                    <label for="psw" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
+                        <div class="button" style="padding-top: 3vh;">
+                             <button type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: maroon;" >Login</button>
+                             <label>
+                             <input type="checkbox" checked="checked" name="remember"> Remember me
+                             </label>
+                        </div> 
+                  </div>
+             </form>
+        </div>
     
+    </main>
+    <footer style="padding-top:9vh;">
+        <hr>
+        <div id="copyright">
+            Created by Marin Grabovac. &copy; 2023
+    </div>
+    </footer>
 </body>
 </html>
