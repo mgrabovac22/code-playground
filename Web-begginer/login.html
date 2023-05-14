@@ -80,11 +80,11 @@
             <form class="Login"style="font-size: large;">
                 <div class="container">
                     <label for="email" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Email</b></label>
-                    <input type="text" placeholder="Enter email" name="email" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
+                    <input type="text" id="email" placeholder="Enter email" name="email" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
                     <label for="psw" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
+                    <input type="password" id="password" placeholder="Enter Password" name="psw" required style="width: 30vh; height: 4vh; font-size: large; background-color: maroon;">
                         <div class="button" style="padding-top: 3vh;">
-                             <button type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: maroon;" >Login</button>
+                             <button id="but"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: maroon;" >Login</button>
                              <label>
                              <input type="checkbox" checked="checked" name="remember"> Remember me
                              </label>
@@ -101,4 +101,14 @@
     </div>
     </footer>
 </body>
+    <script>
+        let button= document.getElementById("but");
+
+        button.addEventListener("click", function(){
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            document.cookie = "myEmail" + email + "myPassword=" + password + "; expires=" + new Date(Date.now() + 3600000).toUTCString();
+        });
+    </script>
 </html>
