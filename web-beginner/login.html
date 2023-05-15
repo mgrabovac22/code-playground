@@ -108,7 +108,7 @@
 
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
-            document.cookie = "myEmail" + email + "myPassword=" + password + "; expires=" + new Date(Date.now() + 3600000).toUTCString();
+            document.cookie = "data-login=email:" + email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString();
         });
     </script>
 </html>
