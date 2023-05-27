@@ -110,12 +110,12 @@
             let password = document.getElementById("password").value;
             document.cookie = "data-login=email:" + email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString();
         });
-        function getCookie(){
+        function getCookie(email){
             let name = email + "=";
             let gettingcookie = decodeURIComponent(document.cookie);
-            let polje = gettingcookie.split("; ");
-            for(let i = 0; i < polje.length; i++) {
-                let k = polje[i];
+            let cArray = gettingcookie.split("; ");
+            for(let i = 0; i < cArray.length; i++) {
+                let k = cArray[i];
                 while(k.charAt(0) == ' '){
                     k = k.substring(1);
                 }
