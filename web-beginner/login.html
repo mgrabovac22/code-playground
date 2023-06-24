@@ -84,11 +84,14 @@
                     <label for="psw" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Password</b></label>
                     <input type="password" id="password" placeholder="Enter Password" name="psw" required style="width: 30vh; height: 4vh; font-size: large; background-color: lightgreen;">
                         <div class="button" style="padding-top: 3vh;">
-                             <button id="but"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen;" >Login</button>
-                             <label>
-                             <input type="checkbox" checked="checked" name="remember"> Remember me
-                             </label>
-                        </div> 
+                             <button id="butIn"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen; position: absolute; left:40.5%;" >Login</button>
+                             <button id="butOut"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen; visibility: hidden; position: absolute; left:40.5%;">Log out</button>
+                                <div class="checkbox" style="position: absolute; left:47%;">
+                                    <label> 
+                                        <input type="checkbox" checked="checked" name="remember""> Remember me
+                                    </label>    
+                                </div> 
+                        </div>
                   </div>
              </form>
         </div>
@@ -102,9 +105,9 @@
     </footer>
 </body>
     <script>
-        let button= document.getElementById("but");
+        let buttonIn= document.getElementById("butIn");
 
-        button.addEventListener("click", function(){
+        buttonIn.addEventListener("click", function(){
 
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
@@ -125,6 +128,15 @@
             }
             return "";
         }
-
+        let buttonOut = document.getElementById("butOut");
+        buttonIn.addEventListener("click", function(){
+            document.getElementById("butIn").style.visibility = 'hidden';
+            document.getElementById("butOut").style.visibility = 'visible';
+        });
+        buttonOut.addEventListener("click", function(){
+            document.getElementById("butIn").style.visibility = 'visible';
+            document.getElementById("butOut").style.visibility = 'hidden';
+            document.cookie = "data-login= ;expires=" + new Date(Date.now()).toUTCString();
+        });
     </script>
 </html>
