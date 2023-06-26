@@ -86,8 +86,8 @@
                         <div class="button" style="padding-top: 3vh;">
                              <button id="butIn"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen;" >Login</button>
                              <button id="butOut"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen; display: none; ">Log out</button>
-                                    <label> 
-                                        <input type="checkbox" checked="checked" name="remember""> Remember me
+                                    <label id="checkbox"> 
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
                                     </label>
                         </div>
                   </div>
@@ -104,15 +104,20 @@
 </body>
     <script>
         let buttonIn= document.getElementById("butIn");
-
+        let Email;
         buttonIn.addEventListener("click", function(){
 
-            let email = document.getElementById("email").value;
+            Email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
-            document.cookie = "data-login=email:" + email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString();
+            document.cookie = "data-login=email:" + Email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString();
+            document.getElementById("butIn").style.display = 'none';
+            document.getElementById("butOut").style.display = 'inline';
+            document.getElementById("checkbox").style.display = 'none';
+            let emailElement = document.getElementById("emailDisplay");
+            emailElement.textContent = getCookie();
         });
-        function getCookie(email){
-            let name = email + "=";
+        function getCookie(Email){
+            let name = Email + "=";
             let gettingcookie = decodeURIComponent(document.cookie);
             let cArray = gettingcookie.split("; ");
             for(let i = 0; i < cArray.length; i++) {
@@ -127,13 +132,10 @@
             return "";
         }
         let buttonOut = document.getElementById("butOut");
-        buttonIn.addEventListener("click", function(){
-            document.getElementById("butIn").style.display = 'none';
-            document.getElementById("butOut").style.display = 'inline';
-        });
         buttonOut.addEventListener("click", function(){
-            document.getElementById("butIn").style.visibility = 'inline';
-            document.getElementById("butOut").style.visibility = 'none';
+            document.getElementById("butOut").style.display = 'none';
+            document.getElementById("butIn").style.display = 'inline';
+            document.getElementById("checkbox").style.display = 'inline';
             document.cookie = "data-login= ;expires=" + new Date(Date.now()).toUTCString();
         });
     </script>
