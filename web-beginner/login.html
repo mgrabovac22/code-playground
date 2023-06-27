@@ -18,7 +18,7 @@
         #title{
             padding-top: 1vh;
             margin-left: 67vh;
-            margin-right: 29vh;
+            margin-right: 27vh;
         }
         #nav-bar{
             padding-top: 6vh;
@@ -66,7 +66,8 @@
         <div id="nav-bar">
             <nav>
                 <a href="index.html">Home</a>
-                <a href="login.html">Login</a>
+                <a href="login.html" id="logInNav" >Login</a>
+                <a href="login.html" id="logOutNav" style="display: none;">Log out</a>
                 <a href="about.html">About us</a>
                 <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
                 <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
@@ -119,12 +120,12 @@
 
                     Email = document.getElementById("email").value;
                     let password = document.getElementById("password").value;
-                    document.cookie = "data-login=email:" + Email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString();
+                    document.cookie = "data-login=email:" + Email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString() + ";path=/";
 
                     window.location.href="index.html";
 
-                    document.getElementById("butIn").style.display = 'none';
-                    document.getElementById("butOut").style.display = 'inline';
+                    document.getElementById("logInNav").style.display = 'none';
+                    document.getElementById("logOutNav").style.display = 'inline';
                     document.getElementById("checkbox").style.display = 'none';
 
                     document.getElementById("password").style.backgroundColor = 'lightgreen';
@@ -141,13 +142,29 @@
 
             }
         });
-
-        let buttonOut = document.getElementById("butOut");
-        buttonOut.addEventListener("click", function(){
-            document.getElementById("butOut").style.display = 'none';
-            document.getElementById("butIn").style.display = 'inline';
+        let logOutNav = document.getElementById("logOutNav");
+        logOutNav.addEventListener("click", function(){
+            document.getElementById("logOutNav").style.display = 'none';
+            document.getElementById("logInNav").style.display = 'inline';
             document.getElementById("checkbox").style.display = 'inline';
             document.cookie = "data-login= ;expires=" + new Date(Date.now()).toUTCString();
         });
+
+        
+
+        window.addEventListener("load", function(){
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if(cookie.startsWith("data-login" + "=")){
+
+                document.getElementById("logInNav").style.display = 'none';
+                document.getElementById("logOutNav").style.display = 'inline';
+                document.getElementById("checkbox").style.display = 'none';
+                }
+            }
+        });
+        
     </script>
 </html>

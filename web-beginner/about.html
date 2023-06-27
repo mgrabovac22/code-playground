@@ -57,7 +57,8 @@
         <div id="nav-bar">
             <nav>
                 <a href="index.html">Home</a>
-                <a href="login.html">Login</a>
+                <a href="login.html" id="logInNav">Login</a>
+                <a href="login.html" id="logOutNav" style="display: none;">Log out</a>
                 <a href="about.html">About us</a>
                 <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
                 <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
@@ -109,4 +110,19 @@
     </div>
     </footer>
 </body>
+<script>
+    window.addEventListener("load", function(){
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if(cookie.startsWith("data-login" + "=")){
+
+                document.getElementById("logInNav").style.display = 'none';
+                document.getElementById("logOutNav").style.display = 'inline';
+                document.getElementById("checkbox").style.display = 'none';
+                }
+            }
+        });
+</script>
 </html>
