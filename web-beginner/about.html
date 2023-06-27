@@ -58,7 +58,7 @@
             <nav>
                 <a href="index.html">Home</a>
                 <a href="login.html" id="logInNav">Login</a>
-                <a href="login.html" id="logOutNav" style="display: none;">Log out</a>
+                <a href=# id="logOutNav" style="display: none;">Log out</a>
                 <a href="about.html">About us</a>
                 <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
                 <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
@@ -124,5 +124,14 @@
                 }
             }
         });
+
+        let logOutNav = document.getElementById("logOutNav");
+        logOutNav.addEventListener("click", function(){
+            document.getElementById("logOutNav").style.display = 'none';
+            document.getElementById("logInNav").style.display = 'inline';
+            document.getElementById("checkbox").style.display = 'inline';
+            document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        });
+
 </script>
 </html>
