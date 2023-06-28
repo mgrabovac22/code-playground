@@ -17,8 +17,8 @@
         }
         #title{
             padding-top: 1vh;
-            margin-left: 80vh;
-            margin-right: 39vh;
+            margin-left: 79vh;
+            margin-right: 37vh;
         }
         #nav-bar{
             padding-top: 6vh;
@@ -55,6 +55,9 @@
         </div>
 
         <div id="nav-bar">
+            <div id="emailDisplay">
+
+            </div>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="login.html" id="logInNav">Login</a>
@@ -117,10 +120,16 @@
             for (let i = 0; i < cookies.length; i++) {
                 const cookie = cookies[i].trim();
                 if(cookie.startsWith("data-login" + "=")){
-
-                document.getElementById("logInNav").style.display = 'none';
-                document.getElementById("logOutNav").style.display = 'inline';
-                document.getElementById("checkbox").style.display = 'none';
+                    let cookieValue = cookie.substring("data-login=".length);
+                    document.getElementById("logInNav").style.display = 'none';
+                    document.getElementById("logOutNav").style.display = 'inline';
+                    cookieValueElement = document.getElementById("emailDisplay");
+                    cookieValueElement.textContent = cookieValue;
+                    document.getElementById("nav-bar").style.paddingTop = '3vh';
+                    document.getElementById("emailDisplay").style.paddingBottom = '1vh';
+                }
+                else{
+                    document.getElementById("nav-bar").style.paddingTop = '6vh'; 
                 }
             }
         });
@@ -129,8 +138,9 @@
         logOutNav.addEventListener("click", function(){
             document.getElementById("logOutNav").style.display = 'none';
             document.getElementById("logInNav").style.display = 'inline';
-            document.getElementById("checkbox").style.display = 'inline';
             document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            cookieValueElement.textContent = " ";
+            document.getElementById("nav-bar").style.paddingTop = '5vh';
         });
 
 </script>
