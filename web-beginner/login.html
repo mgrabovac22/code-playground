@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        header{
+            display: flex;
+            flex-direction:row;
+            background-color:rgb(40, 141, 40);
+        }
+        #title{
+            padding-top: 1vh;
+            margin-left: 67vh;
+            margin-right: 27vh;
+        }
+        #nav-bar{
+            padding-top: 6vh;
+        }
+        a{
+            text-decoration: none;
+            color:black;
+            border-style: solid;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            background-color:lightgreen;
+            font-size:3vh;
+        }
+        #Login{
+           padding-left: 45vh;
+           padding-top: 15vh;
+           padding-bottom: 20vh;
+          border-style: solid;
+          margin-right: 38vh;
+          margin-left:34vh;
+          margin-top: 10vh;
+          background-color:rgb(40, 141, 40);
+          border-radius: 20%;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        #copyright{
+            margin-left: 81vh;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="log-img">
+         <img src="https://prodigits.co.uk/thumbs/wallpapers/p2ls/logo-brands/26/7a45e21912479492.jpg" height="100" width="110">   
+        </div>
+        
+        <div id="title">
+           <h1>Log into the website</h1> 
+        </div>
+
+        <div id="nav-bar">
+            <div id="emailDisplay">
+
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="login.html" id="logInNav" >Login</a>
+                <a href=# id="logOutNav" style="display: none;">Log out</a>
+                <a href="about.html">About us</a>
+                <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
+                <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
+            </nav>
+        </div>
+    </header>
+    <hr>
+    <main>
+
+        <div id="Login">
+            <form class="Login"style="font-size: large;">
+                <div class="container">
+                    <label for="email" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Email</b></label>
+                    <input type="text" id="email" placeholder="Enter email" name="email" required style="width: 30vh; height: 4vh; font-size: large; background-color: lightgreen;">
+                    <label for="psw" style="padding-top: 3vh; padding-bottom: 1vh;"><b>Password</b></label>
+                    <input type="password" id="password" placeholder="Enter Password" name="psw" required style="width: 30vh; height: 4vh; font-size: large; background-color: lightgreen;">
+                        <div class="button" style="padding-top: 3vh;">
+                             <button id="butIn"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen;" >Login</button>
+                             <button id="butOut"type="submit" style="width: 10vh; height: 3vh; font-size: large; background-color: lightgreen; display: none; ">Log out</button>
+                                    <label id="checkbox"> 
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                        </div>
+                  </div>
+             </form>
+        </div>
+    
+    </main>
+    <footer style="padding-top:9vh; ">
+        <hr>
+        <div id="copyright">
+            Created by Marin Grabovac. &copy; 2023
+    </div>
+    </footer>
+</body>
+    <script>
+
+        let buttonIn= document.getElementById("butIn");
+        let Email;
+
+        const substring = "@";
+        let strongPassword = new RegExp('(?=.{8,})')
+       buttonIn.addEventListener("click", function(buttonIn){
+        buttonIn.preventDefault()
+            if((document.getElementById("email").value).includes(substring)){
+
+                document.getElementById("email").style.backgroundColor = 'lightgreen';
+
+                if(strongPassword.test(document.getElementById("password").value)){
+
+                    Email = document.getElementById("email").value;
+                    let password = document.getElementById("password").value;
+                    document.cookie = "data-login=email:" + Email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString() + ";path=/";
+                    
+                    window.location.href="index.html";
+
+                    document.getElementById("logInNav").style.display = 'none';
+                    document.getElementById("logOutNav").style.display = 'inline';
+                    document.getElementById("checkbox").style.display = 'none';
+
+                    document.getElementById("password").style.backgroundColor = 'lightgreen';
+
+                }
+                else{
+                    document.getElementById("password").style.backgroundColor = 'red';
+                    alert('Password is not strong enough, it must containt minimum of 8 characters!')
+                }
+            }
+            else{
+                alert('Incorrect email, please try again!')
+                document.getElementById("email").style.backgroundColor = 'red';
+
+            }
+        });
+        let cookieValueElement;
+        let logOutNav = document.getElementById("logOutNav");
+        logOutNav.addEventListener("click", function(){
+            document.getElementById("logOutNav").style.display = 'none';
+            document.getElementById("logInNav").style.display = 'inline';
+            document.getElementById("checkbox").style.display = 'inline';
+            document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            cookieValueElement.textContent = " ";
+            document.getElementById("nav-bar").style.paddingTop = '5vh'; 
+        });
+        
+
+        window.addEventListener("load", function(){
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if(cookie.startsWith("data-login=")){
+                    let cookieValue = cookie.substring("data-login=".length);
+                document.getElementById("logInNav").style.display = 'none';
+                document.getElementById("logOutNav").style.display = 'inline';
+                document.getElementById("checkbox").style.display = 'none';
+                cookieValueElement = document.getElementById("emailDisplay");
+                    cookieValueElement.textContent = cookieValue;
+                    document.getElementById("nav-bar").style.paddingTop = '3vh';
+                    document.getElementById("emailDisplay").style.paddingBottom = '1vh';
+                }
+                else{
+                    document.getElementById("nav-bar").style.paddingTop = '6vh'; 
+                }
+            }
+        });
+        
+    </script>
+</html>
