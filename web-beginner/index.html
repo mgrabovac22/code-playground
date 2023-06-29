@@ -15,13 +15,13 @@
             background-color: lightslategray;
         }
         #logo-assas{
-            margin-right: 60vh;
+            margin-right: 3vh;
         }
         #titlovi{
             margin-right: 30vh;
         }
         
-        a{
+        .navlink{
             text-decoration: none;
             color:black;
             border-style: solid;
@@ -74,6 +74,31 @@
         #rating-range{
             padding-left: 22vh;
         }
+        
+        #notloginedImg{
+            margin-left: 0.8vh;
+            margin-right: 46vh;
+            border-style:groove;
+            border-color: aliceblue;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            border-top-left-radius: 75px;
+            border-top-right-radius: 75px;
+            overflow: hidden;
+            
+        }
+        #loginedImg{
+            margin-left: 0.8vh;
+            margin-right: 46vh;
+            border-style:groove;
+            border-color: aliceblue;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            border-top-left-radius: 75px;
+            border-top-right-radius: 75px;
+            overflow: hidden;
+            
+        }
     </style>
 </head>
 <body>
@@ -81,6 +106,24 @@
     <header>
         <div id="logo-assas">
              <img class ="Assasins-logo"src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/Assassin%27s_Creed_Logo.svg/1200px-Assassin%27s_Creed_Logo.svg.png" height="100"width="200">
+        </div>
+
+        <div id="container-userInterface">
+            <a id="userLink" href="login.html" style="text-decoration: none;">
+            <div id="notloginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/GB/en/99/EP0001-CUSA02376_00-AV00000000000004/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=336&h=336" alt="Clickable Image" height="95" width="80">
+            </div>
+            <label for="notloginedImg" style="color: black;" >User interface</label>
+            </a>
+        </div>
+
+        <div id="container-userInterface2" style="display: none;">
+            <a id="userLink" href="user.html" style="text-decoration: none;">
+            <div id="loginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/RO/en/99/EP0001-CUSA02376_00-AV00000000000010/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=720&h=720" alt="Clickable Image" height="95" width="80">
+            </div>
+            <label for="notloginedImg" style="color: black;">User interface</label>
+            </a>
         </div>
 
         <div id="titlovi">
@@ -92,12 +135,12 @@
 
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="login.html" id="logInNav">Login</a>
-                <a href=# id="logOutNav" style="display: none;">Log out</a>
-                <a href="about.html">About us</a>
-                <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
-                <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
+                <a class="navlink" href="index.html">Home</a>
+                <a class="navlink" href="login.html" id="logInNav">Login</a>
+                <a class="navlink" href=# id="logOutNav" style="display: none;">Log out</a>
+                <a class="navlink" href="about.html">About us</a>
+                <a class="navlink" href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
+                <a class="navlink" href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
             </nav>
         </div>
             
@@ -289,9 +332,12 @@
                     cookieValueElement.textContent = cookieValue;
                     document.getElementById("nav-bar").style.paddingTop = '4vh';
                     document.getElementById("emailDisplay").style.paddingBottom = '1vh';
+                    document.getElementById("container-userInterface2").style.display ="inline";
+                    document.getElementById("container-userInterface").style.display ="none";
                 }
                 else{
-                    document.getElementById("nav-bar").style.paddingTop = '7vh'; 
+                    document.getElementById("nav-bar").style.paddingTop = '7vh';
+                    document.getElementById("container-userInterface2").style.display ="none"; 
                 }
             }
         });
@@ -302,7 +348,9 @@
             document.getElementById("logInNav").style.display = 'inline';
             document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             cookieValueElement.textContent = " ";
-            document.getElementById("nav-bar").style.paddingTop = '6vh'; 
+            document.getElementById("nav-bar").style.paddingTop = '6vh';
+            document.getElementById("container-userInterface2").style.display ="none";
+            document.getElementById("container-userInterface").style.display ="inline";
         });
 
     </script>
