@@ -3,9 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User interface</title>
+    <style>
+        * {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: black;
+        }
+        header{
+            display: flex;
+            flex-direction:row;
+            background-color:black;
+        }
+        #image{
+            transform: rotateY(180deg);
+        }
+        
+        p{
+            color: azure;
+        }
+        #title1{
+            padding-top: 1vh;
+            margin-left: 70vh;
+            margin-right: 30vh;
+            color: azure;
+        }
+        #nav-bar{
+            padding-top: 6vh;
+        }
+        .navlink{
+            text-decoration: none;
+            color:azure;
+            border-style:solid;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            background-color:black;
+            font-size:3vh;
+        }
+        h3{
+            color: azure;
+        }
+        main{
+            display: flex;
+            flex-direction:row;  
+        }
+        #content{
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+        #copyright{
+            color: azure;
+            text-align: center;
+        }
+        #emailDisplay{
+            color: azure;
+        }
+    </style>
 </head>
 <body>
-    
+    <header>
+
+        <div id="image">
+            <img src="https://cdn.shopify.com/s/files/1/0407/1984/3495/products/plague-doctor-ai-artwork-933.webp?v=1676401414" height="100" width="80">
+        </div>
+        <div id="title1">
+            <h1>Your information</h1>
+        </div>
+
+        <div id="nav-bar">
+            <div id="emailDisplay">
+
+            </div>
+            <nav>
+                <a class="navlink" href="index.html">Home</a>
+                <a class="navlink" href="login.html" id="logInNav">Login</a>
+                <a class="navlink" href=# id="logOutNav" style="display: none;">Log out</a>
+                <a class="navlink" href="about.html">About us</a>
+                <a class="navlink" href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
+                <a class="navlink" href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
+            </nav>
+        </div>
+
+    </header>
+        <hr>
+    <main>
+        
+            <div id="mainImage1">
+                <img src="https://www.giantbomb.com/a/uploads/scale_small/0/8960/2183903-ezio.png" height="780" width="340">
+            </div>
+
+            <div id="content">
+                <h3>Time of your login</h3>
+                <div id=""></div>
+            </div>
+            
+            <div id="mainImage2">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Ezio_Auditore_da_Firenze.png" height="780" width="340">
+            </div>
+    </main>
+    <hr>
+    <footer>
+        <div id="copyright">
+            Created by Marin Grabovac. &copy; 2023
+        </div>
+    </footer>
 </body>
+    <script>
+         let cookieValueElement;
+    window.addEventListener("load", function(){
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if(cookie.startsWith("data-login" + "=")){
+                    let cookieValue = cookie.substring("data-login=".length);
+                    document.getElementById("logInNav").style.display = 'none';
+                    document.getElementById("logOutNav").style.display = 'inline';
+                    cookieValueElement = document.getElementById("emailDisplay");
+                    cookieValueElement.textContent = cookieValue;
+                    document.getElementById("nav-bar").style.paddingTop = '3vh';
+                    document.getElementById("emailDisplay").style.paddingBottom = '1vh';
+                }
+                else{
+                    document.getElementById("nav-bar").style.paddingTop = '6vh'; 
+                }
+            }
+        });
+
+        let logOutNav = document.getElementById("logOutNav");
+        logOutNav.addEventListener("click", function(){
+            document.getElementById("logOutNav").style.display = 'none';
+            document.getElementById("logInNav").style.display = 'inline';
+            document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            cookieValueElement.textContent = " ";
+            document.getElementById("nav-bar").style.paddingTop = '5vh'; 
+            window.location.href="index.html";   
+        });
+    </script>
 </html>
