@@ -57,6 +57,15 @@
         #emailDisplay{
             color: azure;
         }
+        #timeDisplay{
+            color: azure;
+        }
+        h2{
+            color: azure;
+        }
+        #EmailDisplayContent{
+            color: azure;
+        }
     </style>
 </head>
 <body>
@@ -91,9 +100,13 @@
                 <img src="https://www.giantbomb.com/a/uploads/scale_small/0/8960/2183903-ezio.png" height="780" width="340">
             </div>
 
+            
+
             <div id="content">
+                <h2>User:</h2>
+                <div id="EmailDisplayContent"></div>
                 <h3>Time of your login</h3>
-                <div id=""></div>
+                <div id="timeDisplay"></div>
             </div>
             
             <div id="mainImage2">
@@ -109,17 +122,22 @@
 </body>
     <script>
          let cookieValueElement;
+         let cookieValueElement2;
     window.addEventListener("load", function(){
             const cookies = document.cookie.split(";");
 
             for (let i = 0; i < cookies.length; i++) {
                 const cookie = cookies[i].trim();
                 if(cookie.startsWith("data-login" + "=")){
-                    let cookieValue = cookie.substring("data-login=".length);
+                    let cookieValue = cookie.substring("data-login=email:".length);
                     document.getElementById("logInNav").style.display = 'none';
                     document.getElementById("logOutNav").style.display = 'inline';
                     cookieValueElement = document.getElementById("emailDisplay");
                     cookieValueElement.textContent = cookieValue;
+
+                    cookieValueElement2 = document.getElementById("EmailDisplayContent");
+                    cookieValueElement2.textContent = cookieValue;
+
                     document.getElementById("nav-bar").style.paddingTop = '3vh';
                     document.getElementById("emailDisplay").style.paddingBottom = '1vh';
                 }
@@ -128,6 +146,26 @@
                 }
             }
         });
+        let timeDisplayElement;
+
+        window.addEventListener("load", function() {
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+
+                if (cookie.startsWith("acurrent-date" + "=")) {
+                    let cookieValuee = cookie.substring("acurrent-date=".length);
+
+                    let displayedValue = cookieValuee.slice(0, -3);
+
+                    timeDisplayElement = document.getElementById("timeDisplay");
+                    timeDisplayElement.textContent = displayedValue;
+                    break;
+                            }
+                        }
+                    });
+        
 
         let logOutNav = document.getElementById("logOutNav");
         logOutNav.addEventListener("click", function(){
@@ -138,5 +176,6 @@
             document.getElementById("nav-bar").style.paddingTop = '5vh'; 
             window.location.href="index.html";   
         });
+
     </script>
 </html>
