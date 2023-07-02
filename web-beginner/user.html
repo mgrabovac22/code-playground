@@ -23,8 +23,8 @@
         }
         #title1{
             padding-top: 1vh;
-            margin-left: 70vh;
-            margin-right: 30vh;
+            margin-left: 75vh;
+            margin-right: 25vh;
             color: azure;
         }
         #nav-bar{
@@ -47,8 +47,16 @@
             flex-direction:row;  
         }
         #content{
-            margin-left: 300px;
-            margin-right: 300px;
+            margin-top: 200px;
+            margin-left: 490px;
+            margin-right: 480px;
+            margin-bottom: 300px;;
+            text-align: center;
+            border-style: solid;
+            border-color: azure;
+            border: 10%;
+            padding-left:10px;
+            padding-right:10px;
         }
         #copyright{
             color: azure;
@@ -64,6 +72,12 @@
             color: azure;
         }
         #EmailDisplayContent{
+            color: azure;
+        }
+        #timeRemaingingDisplay{
+            color: azure;
+        }
+        #expirationDateDisplay{
             color: azure;
         }
     </style>
@@ -105,8 +119,10 @@
             <div id="content">
                 <h2>User:</h2>
                 <div id="EmailDisplayContent"></div>
-                <h3>Time of your login</h3>
+                <h3>The time of your login</h3>
                 <div id="timeDisplay"></div>
+                <h3>Time remaining</h3>
+                <div id="expirationDateDisplay"></div>
             </div>
             
             <div id="mainImage2">
@@ -147,7 +163,7 @@
             }
         });
         let timeDisplayElement;
-
+        let cookieValuee;
         window.addEventListener("load", function() {
             const cookies = document.cookie.split(";");
 
@@ -155,7 +171,7 @@
             const cookie = cookies[i].trim();
 
                 if (cookie.startsWith("acurrent-date" + "=")) {
-                    let cookieValuee = cookie.substring("acurrent-date=".length);
+                    cookieValuee = cookie.substring("acurrent-date=".length);
 
                     let displayedValue = cookieValuee.slice(0, -3);
 
@@ -177,5 +193,48 @@
             window.location.href="index.html";   
         });
 
+        
+
+        let expirationDateElement;
+        let countdownInterval;
+
+        window.addEventListener("load", function() {
+            const cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+
+                if (cookie.startsWith("acurrent-date" + "=")) {
+                    let cookieValuee = cookie.substring("acurrent-date=".length);
+
+        
+                    let expirationDate = new Date(cookieValuee);
+                    expirationDate.setTime(expirationDate.getTime() - 3600000);
+
+        
+                    clearInterval(countdownInterval);
+
+        
+                    countdownInterval = setInterval(function() {
+                        let currentTime = new Date();
+                        let timeRemaining = expirationDate - currentTime;
+          
+          
+                        
+            
+                        let secondsRemaining = Math.floor(timeRemaining / 1000);
+                        let minutes = Math.floor(secondsRemaining / 60);
+                        let seconds = secondsRemaining % 60;
+
+            
+                        expirationDateElement = document.getElementById("expirationDateDisplay");
+                        expirationDateElement.textContent = "You have: " + minutes + " min and " + seconds + " s.";
+          
+                        }, 1000); 
+
+                        break; 
+                }
+            }
+        });
     </script>
 </html>
