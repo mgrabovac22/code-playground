@@ -72,6 +72,13 @@
             overflow: hidden;
             
         }
+        #FUN{
+            text-decoration:none;
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -121,7 +128,7 @@
         <h3>Who are we?</h3>
         <p>
             Well, it's just me for now, but I am a computer science student who is interested in HTML and CSS, so I am making WebApplications for fun and learning about Web Technologys. I am studying programming and information and communication technologys at the Faculty od Organisation and Informatics. I am currently at the first year and I am yet to study Web Technologys at the second year, but I am
-            already interested in that so I am being mentored by one other student who is 3rd year and already knows couple programming, sctipting languages and HTML.  
+            already interested in that so I am being mentored by one other student who is 3rd year and already knows couple programming, sctipting languages and HTML. <a id="FUN" href="creative.html">FUN!</a>
         </p>
         <h3>
             How to find us?
@@ -178,10 +185,12 @@
                     document.getElementById("emailDisplay").style.paddingBottom = '1vh';
                     document.getElementById("container-userInterface2").style.display ="inline";
                     document.getElementById("container-userInterface").style.display ="none";
+                    document.getElementById("FUN").style.display ="inline";
                 }
                 else{
                     document.getElementById("nav-bar").style.paddingTop = '6vh';
-                    document.getElementById("container-userInterface2").style.display ="none"; 
+                    document.getElementById("container-userInterface2").style.display ="none";
+                    document.getElementById("FUN").style.display ="none"; 
                 }
             }
         });
@@ -195,6 +204,7 @@
             document.getElementById("nav-bar").style.paddingTop = '5vh';
             document.getElementById("container-userInterface2").style.display ="none";
             document.getElementById("container-userInterface").style.display ="inline";
+            document.getElementById("FUN").style.display ="none";
         });
 
 </script>
