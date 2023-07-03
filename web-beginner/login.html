@@ -121,6 +121,9 @@
 
                 if(strongPassword.test(document.getElementById("password").value)){
 
+                    let currentDate = new Date(Date.now()+7200000);
+                    document.cookie = "acurrent-date=" + currentDate.toUTCString() + ";expires=" + new Date(Date.now() + 3600000).toUTCString() + ";path=/";
+
                     Email = document.getElementById("email").value;
                     let password = document.getElementById("password").value;
                     document.cookie = "data-login=email:" + Email + ";Password:" + password + ";expires=" + new Date(Date.now() + 3600000).toUTCString() + ";path=/";

@@ -17,13 +17,13 @@
         }
         #title{
             padding-top: 1vh;
-            margin-left: 79vh;
-            margin-right: 37vh;
+            margin-left: 23vh;
+            margin-right: 36vh;
         }
         #nav-bar{
             padding-top: 6vh;
         }
-        a{
+        .navlink{
             text-decoration: none;
             color:black;
             border-style: solid;
@@ -42,6 +42,36 @@
         #copyright{
             text-align: center;
         }
+        #container-userInterface{
+            margin-left: 3vh;
+        }
+        #container-userInterface2{
+            margin-left: 3vh;
+        }
+        #notloginedImg{
+            margin-left: 2vh;
+            margin-right: 46vh;
+            border-style:groove;
+            border-color: aliceblue;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            border-top-left-radius: 75px;
+            border-top-right-radius: 75px;
+            overflow: hidden;
+            
+        }
+        #loginedImg{
+            margin-left: 2vh;
+            margin-right: 46vh;
+            border-style:groove;
+            border-color: aliceblue;
+            border-width: 0.3vh;
+            border-radius: 10%;
+            border-top-left-radius: 75px;
+            border-top-right-radius: 75px;
+            overflow: hidden;
+            
+        }
     </style>
 </head>
 <body>
@@ -50,6 +80,24 @@
          <img src="https://www.mordeo.org/files/uploads/2020/05/Assassins-Creed-Valhalla-Neo-Logo-4K-Ultra-HD-Mobile-Wallpaper-scaled.jpg" height="100" width="70">   
         </div>
         
+        <div id="container-userInterface">
+            <a id="userLink" href="login.html" style="text-decoration: none;">
+            <div id="notloginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/GB/en/99/EP0001-CUSA02376_00-AV00000000000004/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=336&h=336" alt="" height="75" width="60">
+            </div>
+            <label for="notloginedImg" style="color:deepskyblue;">User interface</label>
+            </a>
+        </div>
+
+        <div id="container-userInterface2" style="display: none;">
+            <a id="userLink" href="user.html" style="text-decoration: none;">
+            <div id="loginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/RO/en/99/EP0001-CUSA02376_00-AV00000000000010/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=720&h=720" alt="" height="75" width="60">
+            </div>
+            <label for="notloginedImg" style="color:deepskyblue;">User interface</label>
+            </a>
+        </div>
+
         <div id="title">
            <h1>About us</h1> 
         </div>
@@ -59,12 +107,12 @@
 
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="login.html" id="logInNav">Login</a>
-                <a href=# id="logOutNav" style="display: none;">Log out</a>
-                <a href="about.html">About us</a>
-                <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
-                <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
+                <a class="navlink" href="index.html">Home</a>
+                <a class="navlink" href="login.html" id="logInNav">Login</a>
+                <a class="navlink" href=# id="logOutNav" style="display: none;">Log out</a>
+                <a class="navlink" href="about.html">About us</a>
+                <a class="navlink" href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
+                <a class="navlink" href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
             </nav>
         </div>
     </header>
@@ -128,9 +176,12 @@
                     cookieValueElement.textContent = cookieValue;
                     document.getElementById("nav-bar").style.paddingTop = '3vh';
                     document.getElementById("emailDisplay").style.paddingBottom = '1vh';
+                    document.getElementById("container-userInterface2").style.display ="inline";
+                    document.getElementById("container-userInterface").style.display ="none";
                 }
                 else{
-                    document.getElementById("nav-bar").style.paddingTop = '6vh'; 
+                    document.getElementById("nav-bar").style.paddingTop = '6vh';
+                    document.getElementById("container-userInterface2").style.display ="none"; 
                 }
             }
         });
@@ -142,6 +193,8 @@
             document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             cookieValueElement.textContent = " ";
             document.getElementById("nav-bar").style.paddingTop = '5vh';
+            document.getElementById("container-userInterface2").style.display ="none";
+            document.getElementById("container-userInterface").style.display ="inline";
         });
 
 </script>
