@@ -1,0 +1,93 @@
+* {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+header{
+    display: flex;
+    flex-direction:row;
+    background-color: lightslategray;
+}
+#logo-assas{
+    margin-right: 3vh;
+}
+#titlovi{
+    margin-right: 30vh;
+}
+
+.navlink{
+    text-decoration: none;
+    color:black;
+    border-style: solid;
+    border-width: 0.3vh;
+    border-radius: 10%;
+    background-color:darkgray;
+    font-size:3vh;
+}
+#nav-bar{
+    padding-top: 7vh;
+}
+p{
+    border-style:dashed;
+    text-align: justify;
+}
+.gamplay-video{
+    display: flex;
+    padding-left: 21vh;
+}
+.brotherhood-img2{
+    display: flex;
+    padding-left:37vh;
+}
+.slike1{
+    display: flex;
+    padding-right: 40vh;
+}
+.vid2{
+    display: flex;
+    padding-left: 20vh; 
+}
+#copyright{
+    margin-left: 85vh;
+}
+main{
+    margin-left: 19vh;
+    margin-right: 19vh;
+}
+.forme{
+    display: flex;
+    border-style: solid;
+    border-width: 0.3vh;
+    margin-left: 19vh;
+    margin-right: 19vh;
+    padding-left: 5vh;
+}
+#comment{
+    padding-left: 5vh;
+}
+#rating-range{
+    padding-left: 22vh;
+}
+
+#notloginedImg{
+    margin-left: 0.8vh;
+    margin-right: 46vh;
+    border-style:groove;
+    border-color: aliceblue;
+    border-width: 0.3vh;
+    border-radius: 10%;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    overflow: hidden;
+    
+}
+#loginedImg{
+    margin-left: 0.8vh;
+    margin-right: 46vh;
+    border-style:groove;
+    border-color: aliceblue;
+    border-width: 0.3vh;
+    border-radius: 10%;
+    border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    overflow: hidden;
+    
+}

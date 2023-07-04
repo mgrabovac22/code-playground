@@ -5,81 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
-    <style>
-        * {
-            font-family:Georgia, 'Times New Roman', Times, serif;
-        }
-        
-        header{
-            display: flex;
-            flex-direction:row;
-            background-color:rgb(77, 24, 175);
-        }
-        #title{
-            padding-top: 1vh;
-            margin-left: 23vh;
-            margin-right: 36vh;
-        }
-        #nav-bar{
-            padding-top: 6vh;
-        }
-        .navlink{
-            text-decoration: none;
-            color:black;
-            border-style: solid;
-            border-width: 0.3vh;
-            border-radius: 10%;
-            background-color:rgb(72, 72, 243);
-            font-size:3vh;
-        }
-        main{
-            margin-right: 20%;
-            margin-left: 20%;
-        }
-        p{
-            text-align: justify;
-        }
-        #copyright{
-            text-align: center;
-        }
-        #container-userInterface{
-            margin-left: 3vh;
-        }
-        #container-userInterface2{
-            margin-left: 3vh;
-        }
-        #notloginedImg{
-            margin-left: 2vh;
-            margin-right: 46vh;
-            border-style:groove;
-            border-color: aliceblue;
-            border-width: 0.3vh;
-            border-radius: 10%;
-            border-top-left-radius: 75px;
-            border-top-right-radius: 75px;
-            overflow: hidden;
-            
-        }
-        #loginedImg{
-            margin-left: 2vh;
-            margin-right: 46vh;
-            border-style:groove;
-            border-color: aliceblue;
-            border-width: 0.3vh;
-            border-radius: 10%;
-            border-top-left-radius: 75px;
-            border-top-right-radius: 75px;
-            overflow: hidden;
-            
-        }
-        #FUN{
-            text-decoration:none;
-            border: 1px;
-            border-style: solid;
-            border-color: black;
-            color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
     <header>
@@ -168,44 +94,5 @@
     </div>
     </footer>
 </body>
-<script>
-    let cookieValueElement;
-    window.addEventListener("load", function(){
-            const cookies = document.cookie.split(";");
-
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if(cookie.startsWith("data-login" + "=")){
-                    let cookieValue = cookie.substring("data-login=".length);
-                    document.getElementById("logInNav").style.display = 'none';
-                    document.getElementById("logOutNav").style.display = 'inline';
-                    cookieValueElement = document.getElementById("emailDisplay");
-                    cookieValueElement.textContent = cookieValue;
-                    document.getElementById("nav-bar").style.paddingTop = '3vh';
-                    document.getElementById("emailDisplay").style.paddingBottom = '1vh';
-                    document.getElementById("container-userInterface2").style.display ="inline";
-                    document.getElementById("container-userInterface").style.display ="none";
-                    document.getElementById("FUN").style.display ="inline";
-                }
-                else{
-                    document.getElementById("nav-bar").style.paddingTop = '6vh';
-                    document.getElementById("container-userInterface2").style.display ="none";
-                    document.getElementById("FUN").style.display ="none"; 
-                }
-            }
-        });
-
-        let logOutNav = document.getElementById("logOutNav");
-        logOutNav.addEventListener("click", function(){
-            document.getElementById("logOutNav").style.display = 'none';
-            document.getElementById("logInNav").style.display = 'inline';
-            document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            cookieValueElement.textContent = " ";
-            document.getElementById("nav-bar").style.paddingTop = '5vh';
-            document.getElementById("container-userInterface2").style.display ="none";
-            document.getElementById("container-userInterface").style.display ="inline";
-            document.getElementById("FUN").style.display ="none";
-        });
-
-</script>
+<script src="about.js"></script>
 </html>

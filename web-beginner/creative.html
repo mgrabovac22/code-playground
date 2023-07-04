@@ -4,52 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Fun!</title>
-        <style>
-            header{
-                display: flex;
-                flex-direction: row;
-            }
-            #imageHeader{
-                margin-right: 700px;
-            }
-            h1{
-                margin-right: 650px;
-            }
-            a{
-                border: 2px;
-                border-style:solid;
-                border-color: darkred;
-                padding: 10px;
-                text-decoration: none;
-                color:darkred;
-                background-color:deeppink;
-                font-size:150%;
-                border-color: darkred;
-            }
-            #mainButton{
-                margin-left: 890px;
-                margin-top: 330px;
-                margin-bottom: 34vh;
-            }
-            footer{
-                text-align: center;
-                
-            }
-                #leftFooter{
-                    position: relative;
-                    color: black;
-                    padding: 1vh;
-                    border-style: solid;
-                    margin-right: 1800px;
-                }
-                #topFooter{
-                    position: relative;
-                    color: black;
-                    padding: 1vh;
-                    border-style: solid;
-                    margin-right: 1800px;
-                }
-        </style>
+        <link rel="stylesheet" href="creative.css">
     </head>
     <body>
 
@@ -79,19 +34,5 @@
         </footer>
 
     </body>
-        <script>
-            
-                document.addEventListener('mousemove', function(k) {
-                let body = document.querySelector('main');
-                let circle = document.getElementById('leftFooter');
-                let left = k.offsetX;
-                circle.style.left = left + 'px';
-                });
-                document.addEventListener('mousemove', function(e) {
-                let body = document.querySelector('main');
-                let circle = document.getElementById('topFooter');
-                let top = e.offsetY;
-                circle.style.top = top + 'px';
-                });
-        </script>
+        <script src="creative.js"></script>
     </html>
