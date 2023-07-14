@@ -2,7 +2,7 @@ const mysql2 = require('mysql2');
     
     class DB{
         constructor(){
-            let connection = mysql2.createConnection({
+            this.connection = mysql2.createConnection({
                 host: 'localhost',
                 user: 'root',
                 password: "root",
@@ -14,7 +14,6 @@ const mysql2 = require('mysql2');
         }
         executeQuery(sql, data){
             return new Promise((resolve, reject) => {
-                    sql = "select * from knjige"
                 this.connection.query(sql, [data], (err, result) =>{
                         if(err){
                             reject(err);
@@ -31,3 +30,5 @@ const mysql2 = require('mysql2');
         }
         
     };
+
+    module.exports = DB;
