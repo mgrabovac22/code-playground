@@ -21,10 +21,26 @@
             return result;
             
         }
+        
+        async update(name, element, elementValue){
+            let sql = `UPDATE users SET ${element} = ? WHERE Name = ?`;
+            this.db.openConnection();
+            let result = await this.db.executeQuery(sql, [elementValue, name]);
+            this.db.closeConnection();
+            return result;
+        }
 
-
+        async delete(name){
+            let sql = "DELETE FROM users WHERE Name = ?";
+            this.db.openConnection();
+            let result = await this.db.executeQuery(sql, name);
+            this.db.closeConnection();
+            return result;
+        }
+        
     };
 
+    // #TESTING#
     let inst = new userDAO();
 
     inst.get("1").then((result) => {
@@ -32,12 +48,23 @@
     }).catch((error) => {
     console.error('Error:', error);
     });
-
+    
     inst.add("Marin", "grabovac@gmail.com", "2003-12-06", 20, "34000").then((result) => {
     console.log(result);
     }).catch((error) => {
     console.error('Error:', error);
     });
-
+    
+    inst.update("Marin", "email", "grabovacmarin@gmail.com").then((result) => {
+    console.log(result);
+    }).catch((error) => {
+    console.error('Error:', error);
+    });
+    
+    inst.delete("Petar").then((result) => {
+    console.log(result);
+    }).catch((error) => {
+    console.error('Error:', error);
+    });
 
 
