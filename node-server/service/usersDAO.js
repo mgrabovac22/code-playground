@@ -5,9 +5,9 @@
             this.db = new DB();
         }
 
-        async get(userId){
+        async get(element, name){
             this.db.openConnection();
-                let result = await this.db.executeQuery("SELECT * FROM users WHERE idUsers = ?", userId);
+                let result = await this.db.executeQuery(`SELECT ${element} FROM users WHERE Name = ?`, name);
 
             this.db.closeConnection();
             return result;
@@ -43,7 +43,7 @@
     // #TESTING#
     let inst = new userDAO();
 
-    inst.get("1").then((result) => {
+    inst.get("email", "Marin").then((result) => {
     console.log(result);
     }).catch((error) => {
     console.error('Error:', error);
