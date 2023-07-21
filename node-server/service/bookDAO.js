@@ -17,19 +17,23 @@ class bookDAO{
         this.db.openConnection();
         let sql = "SELECT * FROM books where idBook = ?";
         let result = await this.db.executeQuery(sql, ID);
-        this.db.openConnection();
+        this.db.closeConnection();
         return result;
     }
 
     async getElement(element, ID){
+        this.db.openConnection();
         let sql = `SELECT ${element} from books where idBook = ?`;
         let result = await this.db.executeQuery(sql, ID);
+        this.db.closeConnection();
         return result;
     }
 
     async getElementWithFilterElement(element, filter, filterValue){
+        this.db.openConnection();
         let sql = `SELECT ${element} from books where ${filter} = ?`;
         let result = await this.db.executeQuery(sql, filterValue);
+        this.db.closeConnection();
         return result;
     }
 

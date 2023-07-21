@@ -17,13 +17,15 @@ class showDAO{
         this.db.openConnection();
         let sql = "SELECT * FROM shows where idshows = ?";
         let result = await this.db.executeQuery(sql, ID);
-        this.db.openConnection();
+        this.db.closeConnection();
         return result;
     }
 
     async getElement(element, ID){
+        this.db.openConnection();
         let sql = `SELECT ${element} from shows where idshows = ?`;
         let result = await this.db.executeQuery(sql, ID);
+        this.db.closeConnection();
         return result;
     }
 
@@ -45,5 +47,6 @@ class showDAO{
         return result;
     }
 }
+
 
     
