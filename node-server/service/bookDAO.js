@@ -7,7 +7,7 @@ class bookDAO{
 
     async getALL(){
         this.db.openConnection();
-        let sql = "SELECT * FROM books";
+        let sql = "SELECT * FROM book";
         let result = await this.db.executeQuery(sql);
         this.db.closeConnection();
         return result;
@@ -15,7 +15,7 @@ class bookDAO{
 
     async get(ID){
         this.db.openConnection();
-        let sql = "SELECT * FROM books where idBook = ?";
+        let sql = "SELECT * FROM book where idBook = ?";
         let result = await this.db.executeQuery(sql, ID);
         this.db.closeConnection();
         return result;
@@ -23,7 +23,7 @@ class bookDAO{
 
     async getElement(element, ID){
         this.db.openConnection();
-        let sql = `SELECT ${element} from books where idBook = ?`;
+        let sql = `SELECT ${element} from book where idBook = ?`;
         let result = await this.db.executeQuery(sql, ID);
         this.db.closeConnection();
         return result;
@@ -31,26 +31,26 @@ class bookDAO{
 
     async getElementWithFilterElement(element, filter, filterValue){
         this.db.openConnection();
-        let sql = `SELECT ${element} from books where ${filter} = ?`;
+        let sql = `SELECT ${element} from book where ${filter} = ?`;
         let result = await this.db.executeQuery(sql, filterValue);
         this.db.closeConnection();
         return result;
     }
 
     async add(book){
-        let sql = "INSERT INTO shows VALUES(default, ?, ?, ?, ?, ?, ?)";
+        let sql = "INSERT INTO book VALUES(default, ?, ?, ?, ?, ?, ?)";
         let result = await this.db.executeQuery(sql, [book.name, book.genre, book.year, book.writer, book.users, book.grade]);
         return result;
     };
 
     async update(ID, element, elementValue){
-        let sql = `UPDATE books SET ${element} = ? WHERE idBook = ?`;
+        let sql = `UPDATE book SET ${element} = ? WHERE idBook = ?`;
         let result = await this.db.executeQuery(sql, [elementValue, ID]);
         return result;
     }
 
     async delete(ID){
-        let sql = "DELETE FROM books WHERE idBook = ?";
+        let sql = "DELETE FROM book WHERE idBook = ?";
         let result = await this.db.executeQuery(sql, ID);
         return result;
     }
