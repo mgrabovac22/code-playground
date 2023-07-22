@@ -39,7 +39,7 @@ class bookDAO{
 
     async add(book){
         let sql = "INSERT INTO book VALUES(default, ?, ?, ?, ?, ?, ?)";
-        let result = await this.db.executeQuery(sql, [book.name, book.genre, book.year, book.writer, book.users, book.grade]);
+        let result = await this.db.executeQuery(sql, [book.name, book.genre, book.year, book.author, book.users, book.grade]);
         return result;
     };
 
