@@ -7,6 +7,10 @@ let fun = function(request, response) {
 
 app.get('/', fun);
 
+const restMovie = require("./restMovie.js");
+app.get("/movies", restMovie.getMovies);
+app.get("/movies", restMovie.getOneMovie);
+
 const list =  [
   {
     "firstName": "Luka",
