@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
 
+const restMovie = require("./restMovie.js");
+app.get("/movies", restMovie.getMovies);
+app.get("/movies", restMovie.getOneMovie);
+app.get("/movies", restMovie.getElementMovie);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
