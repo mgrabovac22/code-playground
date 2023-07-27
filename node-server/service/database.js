@@ -14,7 +14,7 @@ const mysql2 = require('mysql2');
         }
         executeQuery(sql, data){
             return new Promise((resolve, reject) => {
-                this.connection.query(sql, [data], (err, result) =>{
+                this.connection.query(sql, data, (err, result) =>{
                         if(err){
                             reject(err);
                         }
@@ -32,3 +32,5 @@ const mysql2 = require('mysql2');
     };
 
     module.exports = DB;
+
+    
