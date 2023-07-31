@@ -18,20 +18,7 @@ exports.getOneMovie = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.get(1).then((result) => {
-        res.send(result);
-
-    }).catch((err) => {
-        res.send(err);
-    })
-}
-
-exports.getElementMovie = function(req, res) { 
-    res.type("application/json");
-
-    let movieDAO = new MovieDAO();
-
-    movieDAO.getElement("movie_name", 1).then((result) => {
+    movieDAO.get(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +31,7 @@ exports.add = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.add(movie).then((result) => {
+    movieDAO.add(req.params.movie).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -57,7 +44,7 @@ exports.update = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.update(1, "movie_name", "Real Steel").then((result) => {
+    movieDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -70,7 +57,7 @@ exports.delete = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.delete(4).then((result) => {
+    movieDAO.delete(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
