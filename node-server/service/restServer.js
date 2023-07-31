@@ -5,6 +5,9 @@ const restMovie = require("./restMovie.js");
 app.get("/movies", restMovie.getMovies);
 app.get("/movies", restMovie.getOneMovie);
 app.get("/movies", restMovie.getElementMovie);
+app.get("/movies", restMovie.add);
+app.get("/movies", restMovie.update);
+app.get("/movies", restMovie.delete);
 
 let fun = function(request, response) {
   response.send('Hello world');
@@ -12,9 +15,6 @@ let fun = function(request, response) {
 
 app.get('/', fun);
 
-const restMovie = require("./restMovie.js");
-app.get("/movies", restMovie.getMovies);
-app.get("/movies", restMovie.getOneMovie);
 
 const list =  [
   {
