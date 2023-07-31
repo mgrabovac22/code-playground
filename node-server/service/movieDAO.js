@@ -46,6 +46,7 @@ class movieDAO{
     }
 };
 
+module.exports = movieDAO;
     
 
 
