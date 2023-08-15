@@ -7,7 +7,7 @@ class showDAO{
 
     async getALL(){
         this.db.openConnection();
-        let sql = "SELECT * FROM show";
+        let sql = "SELECT * FROM `show`";
         let result = await this.db.executeQuery(sql);
         this.db.closeConnection();
         return result;
@@ -15,7 +15,7 @@ class showDAO{
 
     async get(ID){
         this.db.openConnection();
-        let sql = "SELECT * FROM show where idshows = ?";
+        let sql = "SELECT * FROM `show` where `idshows` = ?";
         let result = await this.db.executeQuery(sql, ID);
         this.db.closeConnection();
         return result;
@@ -30,7 +30,7 @@ class showDAO{
     }
 
     async add(show){
-        let sql = "INSERT INTO show VALUES(default, ?, ?, ?, ?, ?)";
+        let sql = "INSERT INTO `show` VALUES(default, ?, ?, ?, ?, ?)";
         let result = await this.db.executeQuery(sql, [show.name, show.genre, show.rating, show.episodes, show.users]);
         return result;
     }
@@ -42,7 +42,7 @@ class showDAO{
     }
 
     async delete(ID){
-        let sql = "DELETE FROM show WHERE idshows = ?";
+        let sql = "DELETE FROM `show` WHERE `idshows` = ?";
         let result = await this.db.executeQuery(sql, ID);
         return result;
     }
