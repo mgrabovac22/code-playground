@@ -5,8 +5,15 @@ const restMovie = require("./restMovie.js");
   app.get("/movies", restMovie.getMovies);
   app.get("/movies/:ID", restMovie.getOneMovie);
   app.post("/movies", restMovie.add);
-  app.put("/movies", restMovie.update);
+  app.put("/movies/:ID", restMovie.update);
   app.delete("/movies/:ID", restMovie.delete);
+
+const restShow = require("./restShow.js");
+  app.get("/shows", restShow.getShows);
+  app.get("/shows/:ID", restShow.getOneShow);
+  app.post("/shows", restShow.add);
+  app.put("/shows/:ID", restShow.update);
+  app.delete("/shows/:ID", restShow.delete);
 
 let fun = function(request, response) {
   response.send('Hello world');

@@ -48,5 +48,6 @@ class showDAO{
     }
 }
 
+module.exports = showDAO;
 
     
