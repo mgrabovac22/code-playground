@@ -22,6 +22,13 @@ const restBook = require("./restBook.js");
   app.put("/books/:ID", restBook.update);
   app.delete("/books/:ID", restBook.delete);
 
+const restAuthor = require("./restAuthor.js");
+  app.get("/authors", restAuthor.getAuthors);
+  app.get("/authors/:ID", restAuthor.getOneAuthor);
+  app.post("/authors", restAuthor.add);
+  app.put("/authors/:ID", restAuthor.update);
+  app.delete("/authors/:ID", restAuthor.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };

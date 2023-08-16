@@ -47,3 +47,5 @@ class authorsDAO{
         return result;
     }
 };
+
+module.exports = authorsDAO;
