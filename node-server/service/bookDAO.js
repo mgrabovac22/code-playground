@@ -57,4 +57,5 @@ class bookDAO{
 
 };
 
+module.exports = bookDAO;
 

@@ -15,6 +15,13 @@ const restShow = require("./restShow.js");
   app.put("/shows/:ID", restShow.update);
   app.delete("/shows/:ID", restShow.delete);
 
+const restBook = require("./restBook.js");
+  app.get("/books", restBook.getBooks);
+  app.get("/books/:ID", restBook.getOneBook);
+  app.post("/books", restBook.add);
+  app.put("/books/:ID", restBook.update);
+  app.delete("/books/:ID", restBook.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
