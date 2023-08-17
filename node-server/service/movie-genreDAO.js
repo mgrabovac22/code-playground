@@ -55,3 +55,5 @@ class movieGenreDAO{
         return result;
     }
 };
+
+module.exports = movieGenreDAO;

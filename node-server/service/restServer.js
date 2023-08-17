@@ -29,6 +29,13 @@ const restAuthor = require("./restAuthor.js");
   app.put("/authors/:ID", restAuthor.update);
   app.delete("/authors/:ID", restAuthor.delete);
 
+const restMovieGenre = require("./restMovieGenre.js");
+  app.get("/movie-genres", restMovieGenre.getMovieGenres);
+  app.get("/movie-genres/:ID", restMovieGenre.getOneMovieGenre);
+  app.post("/movie-genres", restMovieGenre.add);
+  app.put("/movie-genres/:ID", restMovieGenre.update);
+  app.delete("/movie-genres/:ID", restMovieGenre.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
