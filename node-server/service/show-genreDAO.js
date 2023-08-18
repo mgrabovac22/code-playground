@@ -55,3 +55,5 @@ class showGenreDAO{
         return result;
     }
 };
+
+module.exports = showGenreDAO;

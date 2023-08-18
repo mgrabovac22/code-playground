@@ -36,6 +36,13 @@ const restMovieGenre = require("./restMovieGenre.js");
   app.put("/movie-genres/:ID", restMovieGenre.update);
   app.delete("/movie-genres/:ID", restMovieGenre.delete);
 
+const restShowGenre = require("./restShowGenre.js");
+  app.get("/show-genres", restShowGenre.getShowsGenres);
+  app.get("/show-genres/:ID", restShowGenre.getOneShowGenre);
+  app.post("/show-genres", restShowGenre.add);
+  app.put("/show-genres/:ID", restShowGenre.update);
+  app.delete("/show-genres/:ID", restShowGenre.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
