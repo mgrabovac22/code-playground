@@ -55,3 +55,5 @@ class bookGenreDAO{
         return result;
     }
 };
+
+module.exports = bookGenreDAO;

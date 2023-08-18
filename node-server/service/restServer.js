@@ -43,6 +43,13 @@ const restShowGenre = require("./restShowGenre.js");
   app.put("/show-genres/:ID", restShowGenre.update);
   app.delete("/show-genres/:ID", restShowGenre.delete);
 
+const restBookGenre = require("./restBookGenre.js");
+  app.get("/book-genres", restBookGenre.getBookGenres);
+  app.get("/book-genres/:ID", restBookGenre.getOneBookGenre);
+  app.post("/book-genres", restBookGenre.add);
+  app.put("/book-genres/:ID", restBookGenre.update);
+  app.delete("/book-genres/:ID", restBookGenre.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
