@@ -12,6 +12,13 @@
             return result;
         }
 
+        async getUser(ID){
+            this.db.openConnection();
+            let result = await this.db.executeQuery("SELECT * FROM user WHERE idUsers = ?", ID);
+            this.db.closeConnection();
+            return result;
+        }
+
         async add(user){
             let sql = "INSERT INTO user VALUES(default, ?, ?, ?, ?, ?)";
             let result = await this.db.executeQuery(sql, [user.Name, user.email, user.date_of_birth, user.age, user.password]);
@@ -33,3 +40,4 @@
         
     };
 
+module.exports = userDAO;

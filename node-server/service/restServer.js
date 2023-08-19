@@ -50,6 +50,12 @@ const restBookGenre = require("./restBookGenre.js");
   app.put("/book-genres/:ID", restBookGenre.update);
   app.delete("/book-genres/:ID", restBookGenre.delete);
 
+const restUser = require("./restUser.js");
+  app.get("/users/:ID", restUser.getUser);
+  app.post("/users", restUser.add);
+  app.put("/users/:name", restUser.update);
+  app.delete("/users/:name", restUser.delete);
+
 let fun = function(request, response) {
   response.send('Hello world');
 };
