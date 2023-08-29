@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let authorDAO = new AuthorDAO();
 
-    authorDAO.add(req.params.author).then((result) => {
+    authorDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let authorDAO = new AuthorDAO();
 
-    authorDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    authorDAO.update(req.params.ID, req.body.author).then((result) => {
         res.send(result);
 
     }).catch((err) => {
