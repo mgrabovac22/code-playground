@@ -31,7 +31,7 @@ class authorsDAO{
 
     async add(author){
         let sql = "INSERT INTO author VALUES(default, ?)";
-        let result = await this.db.executeQuery(sql, author.name);
+        let result = await this.db.executeQuery(sql, [author.name]);
         return result;
     }
 

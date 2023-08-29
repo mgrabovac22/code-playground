@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
 
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(express.json());
+
 const restMovie = require("./restMovie.js");
   app.get("/movies", restMovie.getMovies);
   app.get("/movies/:ID", restMovie.getOneMovie);
