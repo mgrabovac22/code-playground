@@ -16,7 +16,7 @@ class authorsDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM author where idauthor = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -24,14 +24,14 @@ class authorsDAO{
     async getElement(element, ID){
         this.db.openConnection();
         let sql = `SELECT ${element} from author where idauthor = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
 
     async add(author){
         let sql = "INSERT INTO author VALUES(default, ?)";
-        let result = await this.db.executeQuery(sql, author.name);
+        let result = await this.db.executeQuery(sql, [author.name]);
         return result;
     }
 
@@ -43,7 +43,9 @@ class authorsDAO{
 
     async delete(ID){
         let sql = "DELETE FROM author WHERE idauthor = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 };
+
+module.exports = authorsDAO;

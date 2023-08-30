@@ -1,11 +1,11 @@
-let MovieDAO = require("./movieDAO");
+let ShowDAO = require("./showDAO");
 
-exports.getMovies = function(req, res) { 
+exports.getShows = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showDAO = new ShowDAO();
 
-    movieDAO.getALL().then((result) => {
+    showDAO.getALL().then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -13,12 +13,12 @@ exports.getMovies = function(req, res) {
     })
 }
 
-exports.getOneMovie = function(req, res) { 
+exports.getOneShow = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showDAO = new ShowDAO();
 
-    movieDAO.get(req.params.ID).then((result) => {
+    showDAO.get(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -29,9 +29,9 @@ exports.getOneMovie = function(req, res) {
 exports.add = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showDAO = new ShowDAO();
 
-    movieDAO.add(req.body).then((result) => {
+    showDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -42,9 +42,9 @@ exports.add = function(req, res) {
 exports.update = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showDAO = new ShowDAO();
 
-    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
+    showDAO.update(req.params.ID, req.body.show).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -55,13 +55,12 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showDAO = new ShowDAO();
 
-    movieDAO.delete(req.params.ID).then((result) => {
+    showDAO.delete(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
         res.send(err);
     })
 }
-

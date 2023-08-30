@@ -1,11 +1,11 @@
-let MovieDAO = require("./movieDAO");
+let AuthorDAO = require("./authorsDAO");
 
-exports.getMovies = function(req, res) { 
+exports.getAuthors = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let authorDAO = new AuthorDAO();
 
-    movieDAO.getALL().then((result) => {
+    authorDAO.getALL().then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -13,12 +13,12 @@ exports.getMovies = function(req, res) {
     })
 }
 
-exports.getOneMovie = function(req, res) { 
+exports.getOneAuthor = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let authorDAO = new AuthorDAO();
 
-    movieDAO.get(req.params.ID).then((result) => {
+    authorDAO.get(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -29,9 +29,9 @@ exports.getOneMovie = function(req, res) {
 exports.add = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let authorDAO = new AuthorDAO();
 
-    movieDAO.add(req.body).then((result) => {
+    authorDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -42,9 +42,9 @@ exports.add = function(req, res) {
 exports.update = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let authorDAO = new AuthorDAO();
 
-    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
+    authorDAO.update(req.params.ID, req.body.author).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -55,13 +55,12 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let authorDAO = new AuthorDAO();
 
-    movieDAO.delete(req.params.ID).then((result) => {
+    authorDAO.delete(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
         res.send(err);
     })
 }
-

@@ -16,7 +16,7 @@ class bookDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM book where idBook = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -24,7 +24,7 @@ class bookDAO{
     async getElement(element, ID){
         this.db.openConnection();
         let sql = `SELECT ${element} from book where idBook = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -32,7 +32,7 @@ class bookDAO{
     async getElementWithFilterElement(element, filter, filterValue){
         this.db.openConnection();
         let sql = `SELECT ${element} from book where ${filter} = ?`;
-        let result = await this.db.executeQuery(sql, filterValue);
+        let result = await this.db.executeQuery(sql, [filterValue]);
         this.db.closeConnection();
         return result;
     }
@@ -51,10 +51,11 @@ class bookDAO{
 
     async delete(ID){
         let sql = "DELETE FROM book WHERE idBook = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 
 };
 
+module.exports = bookDAO;
 

@@ -16,7 +16,7 @@ class movieGenreDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM movie_genres where idGenre_movies = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -24,7 +24,7 @@ class movieGenreDAO{
     async getElement(element, ID){
         this.db.openConnection();
         let sql = `SELECT ${element} from movie_genres where idGenre_movies = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -32,14 +32,14 @@ class movieGenreDAO{
     async getElementWithFilterElement(element, filter, filterValue){
         this.db.openConnection();
         let sql = `SELECT ${element} from movie_genres where ${filter} = ?`;
-        let result = await this.db.executeQuery(sql, filterValue);
+        let result = await this.db.executeQuery(sql, [filterValue]);
         this.db.closeConnection();
         return result;
     }
 
     async add(genre){
         let sql = "INSERT INTO movie_genres VALUES(default, ?)";
-        let result = await this.db.executeQuery(sql, genre.name);
+        let result = await this.db.executeQuery(sql, [genre.name]);
         return result;
     }
 
@@ -51,7 +51,9 @@ class movieGenreDAO{
 
     async delete(ID){
         let sql = "DELETE FROM movie_genres WHERE idGenre_movies = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 };
+
+module.exports = movieGenreDAO;

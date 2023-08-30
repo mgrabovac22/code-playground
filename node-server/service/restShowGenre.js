@@ -1,11 +1,11 @@
-let MovieDAO = require("./movieDAO");
+let ShowGenreDAO = require("./show-genreDAO");
 
-exports.getMovies = function(req, res) { 
+exports.getShowsGenres = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showGenreDAO = new ShowGenreDAO();
 
-    movieDAO.getALL().then((result) => {
+    showGenreDAO.getALL().then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -13,12 +13,12 @@ exports.getMovies = function(req, res) {
     })
 }
 
-exports.getOneMovie = function(req, res) { 
+exports.getOneShowGenre = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showGenreDAO = new ShowGenreDAO();
 
-    movieDAO.get(req.params.ID).then((result) => {
+    showGenreDAO.get(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -29,9 +29,9 @@ exports.getOneMovie = function(req, res) {
 exports.add = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showGenreDAO = new ShowGenreDAO();
 
-    movieDAO.add(req.body).then((result) => {
+    showGenreDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -42,9 +42,9 @@ exports.add = function(req, res) {
 exports.update = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showGenreDAO = new ShowGenreDAO();
 
-    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
+    showGenreDAO.update(req.params.ID, req.body.genre).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -55,13 +55,12 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) { 
     res.type("application/json");
 
-    let movieDAO = new MovieDAO();
+    let showGenreDAO = new ShowGenreDAO();
 
-    movieDAO.delete(req.params.ID).then((result) => {
+    showGenreDAO.delete(req.params.ID).then((result) => {
         res.send(result);
 
     }).catch((err) => {
         res.send(err);
     })
 }
-

@@ -7,7 +7,14 @@
 
         async get(element, name){
             this.db.openConnection();
-            let result = await this.db.executeQuery(`SELECT ${element} FROM user WHERE Name = ?`, name);
+            let result = await this.db.executeQuery(`SELECT ${element} FROM user WHERE Name = ?`, [name]);
+            this.db.closeConnection();
+            return result;
+        }
+
+        async getUser(ID){
+            this.db.openConnection();
+            let result = await this.db.executeQuery("SELECT * FROM user WHERE idUsers = ?", [ID]);
             this.db.closeConnection();
             return result;
         }
@@ -27,9 +34,10 @@
 
         async delete(name){
             let sql = "DELETE FROM user WHERE Name = ?";
-            let result = await this.db.executeQuery(sql, name);
+            let result = await this.db.executeQuery(sql, [name]);
             return result;
         }
         
     };
 
+module.exports = userDAO;
