@@ -5,44 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us</title>
-    <style>
-        * {
-            font-family:Georgia, 'Times New Roman', Times, serif;
-        }
-        
-        header{
-            display: flex;
-            flex-direction:row;
-            background-color:rgb(77, 24, 175);
-        }
-        #title{
-            padding-top: 1vh;
-            margin-left: 79vh;
-            margin-right: 37vh;
-        }
-        #nav-bar{
-            padding-top: 6vh;
-        }
-        a{
-            text-decoration: none;
-            color:black;
-            border-style: solid;
-            border-width: 0.3vh;
-            border-radius: 10%;
-            background-color:rgb(72, 72, 243);
-            font-size:3vh;
-        }
-        main{
-            margin-right: 20%;
-            margin-left: 20%;
-        }
-        p{
-            text-align: justify;
-        }
-        #copyright{
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
     <header>
@@ -50,6 +13,24 @@
          <img src="https://www.mordeo.org/files/uploads/2020/05/Assassins-Creed-Valhalla-Neo-Logo-4K-Ultra-HD-Mobile-Wallpaper-scaled.jpg" height="100" width="70">   
         </div>
         
+        <div id="container-userInterface">
+            <a id="userLink" href="login.html" style="text-decoration: none;">
+            <div id="notloginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/GB/en/99/EP0001-CUSA02376_00-AV00000000000004/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=336&h=336" alt="" height="75" width="60">
+            </div>
+            <label for="notloginedImg" style="color:deepskyblue;">User interface</label>
+            </a>
+        </div>
+
+        <div id="container-userInterface2" style="display: none;">
+            <a id="userLink" href="user.html" style="text-decoration: none;">
+            <div id="loginedImg">
+                <img src="https://store.playstation.com/store/api/chihiro/00_09_000/container/RO/en/99/EP0001-CUSA02376_00-AV00000000000010/0/image?_version=00_09_000&platform=chihiro&bg_color=000000&opacity=100&w=720&h=720" alt="" height="75" width="60">
+            </div>
+            <label for="notloginedImg" style="color:deepskyblue;">User interface</label>
+            </a>
+        </div>
+
         <div id="title">
            <h1>About us</h1> 
         </div>
@@ -59,12 +40,12 @@
 
             </div>
             <nav>
-                <a href="index.html">Home</a>
-                <a href="login.html" id="logInNav">Login</a>
-                <a href=# id="logOutNav" style="display: none;">Log out</a>
-                <a href="about.html">About us</a>
-                <a href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
-                <a href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
+                <a class="navlink" href="index.html">Home</a>
+                <a class="navlink" href="login.html" id="logInNav">Login</a>
+                <a class="navlink" href=# id="logOutNav" style="display: none;">Log out</a>
+                <a class="navlink" href="about.html">About us</a>
+                <a class="navlink" href="https://store.steampowered.com/app/48190/Assassins_Creed_Brotherhood/">Steam</a>
+                <a class="navlink" href="https://en.wikipedia.org/wiki/Assassin%27s_Creed">Wikipedia</a>
             </nav>
         </div>
     </header>
@@ -73,7 +54,7 @@
         <h3>Who are we?</h3>
         <p>
             Well, it's just me for now, but I am a computer science student who is interested in HTML and CSS, so I am making WebApplications for fun and learning about Web Technologys. I am studying programming and information and communication technologys at the Faculty od Organisation and Informatics. I am currently at the first year and I am yet to study Web Technologys at the second year, but I am
-            already interested in that so I am being mentored by one other student who is 3rd year and already knows couple programming, sctipting languages and HTML.  
+            already interested in that so I am being mentored by one other student who is 3rd year and already knows couple programming, sctipting languages and HTML. <a id="FUN" href="creative.html">FUN!</a>
         </p>
         <h3>
             How to find us?
@@ -113,36 +94,5 @@
     </div>
     </footer>
 </body>
-<script>
-    let cookieValueElement;
-    window.addEventListener("load", function(){
-            const cookies = document.cookie.split(";");
-
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if(cookie.startsWith("data-login" + "=")){
-                    let cookieValue = cookie.substring("data-login=".length);
-                    document.getElementById("logInNav").style.display = 'none';
-                    document.getElementById("logOutNav").style.display = 'inline';
-                    cookieValueElement = document.getElementById("emailDisplay");
-                    cookieValueElement.textContent = cookieValue;
-                    document.getElementById("nav-bar").style.paddingTop = '3vh';
-                    document.getElementById("emailDisplay").style.paddingBottom = '1vh';
-                }
-                else{
-                    document.getElementById("nav-bar").style.paddingTop = '6vh'; 
-                }
-            }
-        });
-
-        let logOutNav = document.getElementById("logOutNav");
-        logOutNav.addEventListener("click", function(){
-            document.getElementById("logOutNav").style.display = 'none';
-            document.getElementById("logInNav").style.display = 'inline';
-            document.cookie = "data-login= ;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            cookieValueElement.textContent = " ";
-            document.getElementById("nav-bar").style.paddingTop = '5vh';
-        });
-
-</script>
+<script src="about.js"></script>
 </html>

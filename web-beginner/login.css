@@ -1,0 +1,45 @@
+* {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+header{
+    display: flex;
+    flex-direction:row;
+    background-color:rgb(40, 141, 40);
+}
+#title{
+    padding-top: 1vh;
+    margin-left: 67vh;
+    margin-right: 27vh;
+}
+#nav-bar{
+    padding-top: 6vh;
+}
+a{
+    text-decoration: none;
+    color:black;
+    border-style: solid;
+    border-width: 0.3vh;
+    border-radius: 10%;
+    background-color:lightgreen;
+    font-size:3vh;
+}
+#Login{
+   padding-left: 45vh;
+   padding-top: 15vh;
+   padding-bottom: 20vh;
+  border-style: solid;
+  margin-right: 38vh;
+  margin-left:34vh;
+  margin-top: 10vh;
+  background-color:rgb(40, 141, 40);
+  border-radius: 20%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    
+}
+#copyright{
+    margin-left: 81vh;
+}
