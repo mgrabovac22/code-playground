@@ -18,7 +18,7 @@ exports.add = function(req, res) {
 
     let userDAO = new UsersDAO();
 
-    userDAO.add(req.params.user).then((result) => {
+    userDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -31,7 +31,7 @@ exports.update = function(req, res) {
 
     let userDAO = new UsersDAO();
 
-    userDAO.update(req.body.name, req.body.element, req.body.elementValue).then((result) => {
+    userDAO.update(req.params.name, req.body.user).then((result) => {
         res.send(result);
 
     }).catch((err) => {

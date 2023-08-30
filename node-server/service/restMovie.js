@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.add(req.params.movie).then((result) => {
+    movieDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
         res.send(result);
 
     }).catch((err) => {

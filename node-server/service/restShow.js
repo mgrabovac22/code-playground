@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let showDAO = new ShowDAO();
 
-    showDAO.add(req.params.show).then((result) => {
+    showDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let showDAO = new ShowDAO();
 
-    showDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    showDAO.update(req.params.ID, req.body.show).then((result) => {
         res.send(result);
 
     }).catch((err) => {

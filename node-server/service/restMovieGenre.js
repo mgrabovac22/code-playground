@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let movieGenreDAO = new MovieGenreDAO();
 
-    movieGenreDAO.add(req.params.genre).then((result) => {
+    movieGenreDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let movieGenreDAO = new MovieGenreDAO();
 
-    movieGenreDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    movieGenreDAO.update(req.params.ID, req.body.genre).then((result) => {
         res.send(result);
 
     }).catch((err) => {

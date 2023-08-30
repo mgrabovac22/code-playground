@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let bookDAO = new BookDAO();
 
-    bookDAO.add(req.params.book).then((result) => {
+    bookDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let bookDAO = new BookDAO();
 
-    bookDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    bookDAO.update(req.params.ID, req.body.book).then((result) => {
         res.send(result);
 
     }).catch((err) => {

@@ -31,7 +31,7 @@ exports.add = function(req, res) {
 
     let bookGenreDAO = new BookGenreDAO();
 
-    bookGenreDAO.add(req.params.genre).then((result) => {
+    bookGenreDAO.add(req.body).then((result) => {
         res.send(result);
 
     }).catch((err) => {
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
 
     let bookGenreDAO = new BookGenreDAO();
 
-    bookGenreDAO.update(req.body.ID, req.body.element, req.body.elementValue).then((result) => {
+    bookGenreDAO.update(req.params.ID, req.body.genre).then((result) => {
         res.send(result);
 
     }).catch((err) => {
