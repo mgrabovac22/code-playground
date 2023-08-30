@@ -16,14 +16,14 @@ class movieDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM movie where idMovie = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.openConnection();
         return result;
     }
 
     async getElement(element, ID){
         let sql = `SELECT ${element} from movie where idMovie = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 
@@ -41,7 +41,7 @@ class movieDAO{
 
     async delete(ID){
         let sql = "DELETE FROM movie WHERE idMovie = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 };

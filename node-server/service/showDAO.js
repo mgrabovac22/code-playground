@@ -16,7 +16,7 @@ class showDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM `show` where `idshows` = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -24,7 +24,7 @@ class showDAO{
     async getElement(element, ID){
         this.db.openConnection();
         let sql = `SELECT ${element} from show where idshows = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -43,7 +43,7 @@ class showDAO{
 
     async delete(ID){
         let sql = "DELETE FROM `show` WHERE `idshows` = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 }

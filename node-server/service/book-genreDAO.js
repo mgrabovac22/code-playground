@@ -16,7 +16,7 @@ class bookGenreDAO{
     async get(ID){
         this.db.openConnection();
         let sql = "SELECT * FROM book_genres where idBook_genre = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -24,7 +24,7 @@ class bookGenreDAO{
     async getElement(element, ID){
         this.db.openConnection();
         let sql = `SELECT ${element} from book_genres where idBook_genre = ?`;
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         this.db.closeConnection();
         return result;
     }
@@ -32,14 +32,14 @@ class bookGenreDAO{
     async getElementWithFilterElement(element, filter, filterValue){
         this.db.openConnection();
         let sql = `SELECT ${element} from book_genres where ${filter} = ?`;
-        let result = await this.db.executeQuery(sql, filterValue);
+        let result = await this.db.executeQuery(sql, [filterValue]);
         this.db.closeConnection();
         return result;
     }
 
     async add(genre){
         let sql = "INSERT INTO book_genres VALUES(default, ?)";
-        let result = await this.db.executeQuery(sql, genre.name);
+        let result = await this.db.executeQuery(sql, [genre.name]);
         return result;
     }
 
@@ -51,7 +51,7 @@ class bookGenreDAO{
 
     async delete(ID){
         let sql = "DELETE FROM book_genres WHERE idBook_genre = ?";
-        let result = await this.db.executeQuery(sql, ID);
+        let result = await this.db.executeQuery(sql, [ID]);
         return result;
     }
 };
