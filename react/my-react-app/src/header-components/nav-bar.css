@@ -1,0 +1,14 @@
+.link{
+    padding:20px;
+    margin-top: 4vh;
+}
+#nav{
+    display: flex;
+    flex-direction: row;
+
+}
+a{
+    text-decoration: none;
+    color: white;
+    cursor: pointer; 
+}
