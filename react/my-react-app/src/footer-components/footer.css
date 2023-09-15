@@ -1,0 +1,17 @@
+#footer{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#child1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#child2{
+    text-align: center;
+    color:darkgray;
+}
+figcaption{
+    text-align: center;
+    color:lightslategrey;
+}
