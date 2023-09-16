@@ -4,7 +4,7 @@ import NavBar from './nav-bar.js';
 import './header.css';
 
 
-function header1(){
+function Header(){
     return(
         <div id= "header">
             <div class ="djeloviHeadera">
@@ -19,4 +19,4 @@ function header1(){
         </div>
     )
 }
-export default header1;
+export default Header;
