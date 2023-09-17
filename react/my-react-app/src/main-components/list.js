@@ -12,7 +12,6 @@ const Collapsible = ({ title, children }) => {
     <div className="collapsible">
       <div className="collapsible-header" onClick={toggleCollapse}>
         <span>{title}</span>
-        <i className={`fas ${isCollapsed ? 'fa-chevron-down' : 'fa-chevron-up'}`}></i>
       </div>
       {!isCollapsed && <div className="collapsible-content">{children}</div>}
     </div>
