@@ -1,0 +1,27 @@
+.under-collapsible {
+    border:none;
+  }
+  
+.under-collapsible-header {
+    background-color:grey;
+    color: white;
+    cursor: pointer;
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-bottom: 3px;
+    width: 2%;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 1vh;
+}
+  
+.under-collapsible-content {
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: #282c34;
+}
+  
+.under-collapsible.active .under-collapsible-content {
+    display: block;
+}
