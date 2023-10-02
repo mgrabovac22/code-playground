@@ -1,0 +1,31 @@
+#main{
+    background-color:dimgray;
+}
+.name{
+    text-align: right;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.kopakana{
+    font-family: cursive;
+    font-style: oblique;
+}
+#text1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.quote-shining{
+     
+    font-size: 12px;
+}
+.quote-godfather{
+    font-size: 17px;
+}
+.quote-gladiator{
+    padding-top: 3vh;
+    font-size: 14px;
+}
+.quote-training{
+    padding-top:2.5vh;
+}
+

@@ -8,10 +8,10 @@ import Main from './main-components/main';
 function Default(){
 
     return(
-        <>
+        <div  id="main">
             <Header></Header>
             <Main></Main>
-        </>
+        </div>
     );
 }
 
