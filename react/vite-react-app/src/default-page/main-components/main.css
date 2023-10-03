@@ -28,4 +28,18 @@
 .quote-training{
     padding-top:2.5vh;
 }
+#main{
+    background-image: url('background.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;    
+}
+#LoginLogo{
+    padding-top: 13vh;
+    padding-left: 180px;
+}
+#RegisterLogo{
+    padding-top: 6vh;
+    padding-left: 1200px;
+    padding-bottom: 17vh;
+}
 
