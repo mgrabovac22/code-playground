@@ -1,0 +1,12 @@
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #524F4F;
+}
+#img1{
+    transform: rotateY(180deg);
+}
+#h1-div{
+    padding-bottom: 2vh;
+}

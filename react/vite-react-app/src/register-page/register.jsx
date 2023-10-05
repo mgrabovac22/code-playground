@@ -1,12 +1,12 @@
 import React from 'react';
 import './register.css';
 
-
+import HeaderReg from './header-components/Header';
 function Register(){
 
     return(
         <>
-            <p>This is register</p>
+            <HeaderReg></HeaderReg>
         </>
     );
 }

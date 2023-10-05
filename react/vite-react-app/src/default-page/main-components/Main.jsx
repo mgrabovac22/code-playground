@@ -13,6 +13,7 @@ function Main(){
             </div>
             <div id="RegisterLogo">
                 <RegisterLogo/>
+                <img id ="hat"src="https://www.freeiconspng.com/thumbs/fedora-png/fedora-hat-transparent-pictures-10.png" width="150" height="120"/>
             </div>
         </div>
     );

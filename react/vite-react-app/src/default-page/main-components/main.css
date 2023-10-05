@@ -41,5 +41,11 @@
     padding-top: 6vh;
     padding-left: 1200px;
     padding-bottom: 17vh;
+    display: flex;
+    flex-direction: row;
+}
+#hat{
+    padding-top: 4vh;
+    padding-left: 30px;
 }
 
