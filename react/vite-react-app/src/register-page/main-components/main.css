@@ -1,0 +1,20 @@
+#mainReg{
+    background-color: dimgray;
+    
+}
+.inputC{
+    display: flex;
+    flex-direction: row;
+}
+.icon{
+    padding-right: 10px;
+}
+.input-field{
+    width: 500px;
+    height: 60px;
+}
+input,
+input::placeholder {
+    font: 1.25rem/3 sans-serif;
+}
+

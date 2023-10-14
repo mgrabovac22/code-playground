@@ -6,7 +6,13 @@
 }
 #img1{
     transform: rotateY(180deg);
+    padding-top: 1vh;
+    padding-right: 10px;
 }
 #h1-div{
     padding-bottom: 2vh;
+}
+#img2{
+    padding-top: 1vh;
+    padding-right: 10px;
 }
