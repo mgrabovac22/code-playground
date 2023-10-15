@@ -56,7 +56,12 @@ function MainReg(){
             password: password
         }
 
+        let header = new Headers({
+            "Content-Type": "application/json"
+        });
+
         fetch(regLink, {
+            headers: header,
             method: "POST",
             body: JSON.stringify(data)
         }).then((response) => {

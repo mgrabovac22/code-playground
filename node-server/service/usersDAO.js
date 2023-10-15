@@ -20,7 +20,6 @@
         }
 
         async add(user){
-            console.log(user);
             let sql = "INSERT INTO user VALUES(default, ?, ?, ?, ?, ?)";
             let result = await this.db.executeQuery(sql, [user.Name, user.email, user.date_of_birth, user.age, user.password]);
             return result;
