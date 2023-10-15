@@ -70,4 +70,9 @@ input::placeholder {
 #img1Reg{
     padding-top: 57vh;
 }
+#errorMess{
+    color: red;
+    border: 20px;
+    border-color: red
+}
 
