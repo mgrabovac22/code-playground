@@ -1,5 +1,7 @@
-#mainReg{
+#MainReg{
     background-color: dimgray;
+    display: flex;
+    flex-direction: row;
     
 }
 .inputC{
@@ -12,9 +14,59 @@
 .input-field{
     width: 500px;
     height: 60px;
+    background-color: gray;
 }
 input,
 input::placeholder {
     font: 1.25rem/3 sans-serif;
+    color:rgb(66, 62, 62);
+    padding-left: 5px;
+}
+
+#formDiv{
+    padding-left: 300px;
+    padding-top: 3vh;
+}
+
+.labelReg{
+    padding-left: 60px;
+}
+
+#buttonCont{
+    padding-top: 30px;
+    padding-left: 60px;
+}
+
+#submitReg {
+    width: auto;
+    padding: 15px 36px;
+    background-color: gray;
+    color:rgb(66, 62, 62);
+    font: sans-serif;
+    font-size: large;
+}
+
+#submitReg:hover {
+    opacity: 0.8;
+}
+
+#LinkBackReg{
+    text-decoration: underline;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(66, 62, 62);
+}
+#backLinkRegCont{
+    padding-left: 60px;
+    padding-top: 20px;
+}
+
+#img2Reg{
+    padding-left: 360px;
+    padding-top: 2vh;
+}
+
+#img1Reg{
+    padding-top: 55vh;
 }
 
