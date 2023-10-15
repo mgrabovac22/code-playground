@@ -59,6 +59,7 @@ input::placeholder {
 #backLinkRegCont{
     padding-left: 60px;
     padding-top: 20px;
+    padding-bottom: 2.5vh;
 }
 
 #img2Reg{
@@ -67,6 +68,6 @@ input::placeholder {
 }
 
 #img1Reg{
-    padding-top: 55vh;
+    padding-top: 57vh;
 }
 
