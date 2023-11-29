@@ -107,8 +107,11 @@ function MainReg(){
                         <button onClick={buttonHandler} type="button" id="submitReg">Register</button>
                     </div>
 
-                    <div id="backLinkRegCont">
-                        <Link to="/" id="LinkBackReg">Go back</Link>
+                    <div id="loginLinkCont">
+                        <p>Already have an account?</p>
+                        <div id="backLinkRegCont">
+                            <Link to="/login" id="LinkBackReg">Login</Link>
+                        </div>
                     </div>
 
                 </form>

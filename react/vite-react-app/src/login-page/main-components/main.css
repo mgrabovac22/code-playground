@@ -1,12 +1,13 @@
-#MainReg{
+#MainLog{
     background-color: dimgray;
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;    
 }
-.inputC{
+.inputR{
     display: flex;
     flex-direction: row;
+    padding-bottom: 2vh;
+    padding-top: 1vh;
 }
 .icon{
     padding-right: 10px;
@@ -28,7 +29,7 @@ input::placeholder {
     padding-top: 3vh;
 }
 
-.labelReg{
+.labelLog{
     padding-left: 60px;
 }
 
@@ -37,7 +38,7 @@ input::placeholder {
     padding-left: 60px;
 }
 
-#submitReg {
+#submitLog {
     width: auto;
     padding: 15px 36px;
     background-color: gray;
@@ -46,34 +47,35 @@ input::placeholder {
     font-size: large;
 }
 
-#submitReg:hover {
+#submitLog:hover {
     opacity: 0.8;
 }
 
-#LinkBackReg{
-    text-decoration: underline;
-    font-style: italic;
-    color: rgb(0, 0, 0);
-}
-#backLinkRegCont{
-    padding-left: 10px;
+#backLinkLog{
     padding-top: 2vh;
+    padding-left: 10px;
 }
 
-#img2Reg{
+#LinkBackLog{
+    text-decoration: underline;
+    color: black;
+    font-style: italic;
+}
+
+#img2Log1{
     padding-left: 360px;
     padding-top: 2vh;
 }
 
-#img1Reg{
-    padding-top: 58vh;
+#img1Log1{
+    padding-top: 57vh;
 }
 #errorMess{
     color: red;
     border: 20px;
     border-color: red
 }
-#loginLinkCont{
+#checkingAcc{
     display: flex;
     flex-direction: row;
     padding-left: 60px;

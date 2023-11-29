@@ -1,13 +1,17 @@
 import React from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+
+import HeaderLog from './header-components/Header';
+import MainLog from './main-components/Main';
+import FooterLog from './footer-components/Footer';
 
 function Login(){
 
     return(
         <>
-            <p>This is login</p>
-            <Link to="/register">Go to register</Link>
+            <HeaderLog></HeaderLog>
+            <MainLog></MainLog>
+            <FooterLog></FooterLog>
 
         </>
     );
