@@ -262,7 +262,6 @@ CREATE TABLE `user` (
   `password` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idUsers`),
   UNIQUE KEY `idUsers_UNIQUE` (`idUsers`),
-  UNIQUE KEY `Name_UNIQUE` (`Name`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
