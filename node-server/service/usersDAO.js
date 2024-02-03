@@ -39,10 +39,13 @@
         }
 
         async login(email, password){
+            console.log(email);
+            console.log(password);
             let sql = "SELECT * FROM user WHERE email = ?";
             let result = await this.db.executeQuery(sql, [email]);
             let check;
-            if(result.password==password){
+            console.log(result);
+            if(result[0].password==password){
                 check = true;
             }
             else{

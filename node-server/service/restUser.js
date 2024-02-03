@@ -56,7 +56,7 @@ exports.login = function(req, res){
     res.type("application/json");
 
     let userDAO = new UsersDAO();
-    
+    console.log(req.body);
     userDAO.login(req.body.email, req.body.password).then((result) => {
         res.send({"result": result});
 

@@ -6,8 +6,7 @@ function MainLog() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState(null);
-
-    const checkUserLink = "http://localhost:3000/users/login"; 
+    const navigate = useNavigate();
 
     const inputHandler = (event) => {
         let elementName = event.target.name;
@@ -24,36 +23,6 @@ function MainLog() {
     const routeChange = () => {
         let path = "/movies";
         navigate(path);
-    };
-
-    const buttonHandler = () => {
-        setMessage("");
-
-        if (!email || !password) {
-            setMessage("Please enter both email and password.");
-            return;
-        }
-        fetch(`${checkUserLink}?email=${email}`, {
-            method: "GET",
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.exists) {
-                loginUser();
-            } 
-            else {
-                setMessage("Invalid email or password.");
-            }
-        })
-        .catch(error => {
-            setMessage("An error occurred while checking the email.");
-            console.error('Error:', error);
-        });
     };
 
     const loginUser = () => {
@@ -78,6 +47,7 @@ function MainLog() {
             return response.json();
         })
         .then(data => {
+            console.log(data);
             if (data.result) {
                 setMessage("Login successful!");
                 routeChange();
@@ -117,7 +87,7 @@ function MainLog() {
                     </div>
 
                     <div id="buttonCont">
-                        <button onClick={buttonHandler} type="button" id="submitLog">Login</button>
+                        <button onClick={loginUser} type="button" id="submitLog">Login</button>
                     </div>
                 </form>
                 <div id="checkingAcc">
