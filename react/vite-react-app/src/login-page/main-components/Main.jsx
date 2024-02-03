@@ -1,55 +1,131 @@
 import React, { useState } from "react";
-import './main.css';
 import { Link } from "react-router-dom";
+import './main.css';
 
+function MainLog() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState(null);
 
+    const checkUserLink = "http://localhost:3000/users/usrname/login"; 
 
-function MainLog(){
-    
+    const inputHandler = (event) => {
+        let elementName = event.target.name;
+
+        if (elementName === "emailInt") {
+            setEmail(event.target.value);
+        }
+        else if (elementName === "PassInt") {
+            setPassword(event.target.value);
+        }
+
+    };
+
+    const buttonHandler = () => {
+        setMessage("");
+
+        if (!email || !password) {
+            setMessage("Please enter both email and password.");
+            return;
+        }
+        fetch(`${checkUserLink}?email=${email}`, {
+            method: "GET",
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.exists) {
+                loginUser();
+            } 
+            else {
+                setMessage("Invalid email or password.");
+            }
+        })
+        .catch(error => {
+            setMessage("An error occurred while checking the email.");
+            console.error('Error:', error);
+        });
+    };
+
+    const loginUser = () => {
+        let data = {
+            email: email,
+            password: password
+        };
+
+        let header = new Headers({
+            "Content-Type": "application/json"
+        });
+
+        fetch("http://localhost:3000/login", {
+            headers: header,
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                setMessage("Login successful!");
+            } else {
+                setMessage("Invalid email or password.");
+            }
+        })
+        .catch(error => {
+            setMessage("An error occurred while processing your request.");
+            console.error('Error:', error);
+        });
+    };
 
     return (
         <div id="MainLog">
             <div id="img1Log1">
-                <img src="https://cdn.pixabay.com/photo/2013/07/13/12/18/camera-159582_1280.png" height="130" width="150"/>
+                <img src="https://cdn.pixabay.com/photo/2013/07/13/12/18/camera-159582_1280.png" height="130" width="150" alt="Camera" />
             </div>
-            <div id = "formDiv">
-                
+            <div id="formDiv">
+                <p id="errorMess">{message}</p>
                 <form>
 
-                    <div class="inputCont">
-                        <h2 class ="labelLog">Enter your email</h2>
-                        <div class="inputR">
-                            <img class = "icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png"width="50" height="60"/>
-                            <input class="input-field" type="text" placeholder="Email" name="emailInt"/>
+                    <div className="inputCont">
+                        <h2 className="labelLog">Enter your email</h2>
+                        <div className="inputR">
+                            <img className="icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png" width="50" height="60" alt="Icon" />
+                            <input onChange={inputHandler} className="input-field" type="text" placeholder="Email" name="emailInt" />
                         </div>
                     </div>
 
-                    
-
-                    <div class="inputCont">
-                        <h2 class ="labelLog">Enter your password</h2>
-                        <div class="inputR">
-                            <img class = "icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png" width="50" height="60"/>
-                            <input class="input-field" type="password" placeholder="Password" name="PassInt"/>
+                    <div className="inputCont">
+                        <h2 className="labelLog">Enter your password</h2>
+                        <div className="inputR">
+                            <img className="icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png" width="50" height="60" alt="Icon" />
+                            <input onChange={inputHandler} className="input-field" type="password" placeholder="Password" name="PassInt" />
                         </div>
                     </div>
 
                     <div id="buttonCont">
-                        <button type="button" id="submitLog">Login</button>
+                        <button onClick={buttonHandler} type="button" id="submitLog">Login</button>
                     </div>
-
-
                 </form>
-                    <div id="checkingAcc">
-                        <p>Don't have an account? </p>
-                        <div id="backLinkLog">
+                <div id="checkingAcc">
+                    <p>Don't have an account? </p>
+                    <div id="backLinkLog">
                         <Link to="/register" id="LinkBackLog">Register</Link>
-                        </div>
                     </div>
+                </div>
             </div>
+
             <div id="img2Log1">
-                <img src="https://static.vecteezy.com/system/resources/previews/024/098/186/original/cinema-film-tape-reel-free-png.png"  height="100" width="130"/>
+                <img src="https://static.vecteezy.com/system/resources/previews/024/098/186/original/cinema-film-tape-reel-free-png.png" height="100" width="130" alt="Film Tape Reel" />
             </div>
+
         </div>
     );
 }
