@@ -7,7 +7,7 @@ function MainLog() {
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState(null);
 
-    const checkUserLink = "http://localhost:3000/users/usrname/login"; 
+    const checkUserLink = "http://localhost:3000/users/login"; 
 
     const inputHandler = (event) => {
         let elementName = event.target.name;
@@ -61,7 +61,7 @@ function MainLog() {
             "Content-Type": "application/json"
         });
 
-        fetch("http://localhost:3000/login", {
+        fetch("http://localhost:3000/users/login", {
             headers: header,
             method: "POST",
             body: JSON.stringify(data)
@@ -73,7 +73,7 @@ function MainLog() {
             return response.json();
         })
         .then(data => {
-            if (data.success) {
+            if (data.result) {
                 setMessage("Login successful!");
             } else {
                 setMessage("Invalid email or password.");

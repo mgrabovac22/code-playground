@@ -67,6 +67,7 @@ const restUser = require("./restUser.js");
   app.post("/users", restUser.add);
   app.put("/users/:name", restUser.update);
   app.delete("/users/:name", restUser.delete);
+  app.post("/users/login", restUser.login);
 
 let fun = function(request, response) {
   response.send('Hello world');

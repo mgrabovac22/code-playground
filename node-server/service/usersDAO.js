@@ -37,6 +37,19 @@
             let result = await this.db.executeQuery(sql, [name]);
             return result;
         }
+
+        async login(email, password){
+            let sql = "SELECT * FROM user WHERE email = ?";
+            let result = await this.db.executeQuery(sql, [email]);
+            let check;
+            if(result.password==password){
+                check = true;
+            }
+            else{
+                check = false;
+            }
+            return check;
+        }
         
     };
 
