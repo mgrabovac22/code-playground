@@ -58,8 +58,15 @@ exports.login = function(req, res){
     let userDAO = new UsersDAO();
     console.log(req.body);
     userDAO.login(req.body.email, req.body.password).then((result) => {
-        res.send({"result": result});
-
+        if(result!=null){
+            req.session.name=result.name;
+            req.session.email=result.email;
+            res.send({"result": true});
+        }
+        else{
+            res.send({"result": false});
+        }
+        
     }).catch((err) => {
         res.send(err);
     })

@@ -1,8 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+let session = require('express-session');
 
 const app = express();
+
+app.use(session({
+  secret: 'pecena voda',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 app.use(bodyParser.urlencoded({
   extended: false
