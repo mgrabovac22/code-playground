@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './main.css';
 
 function MainLog() {
@@ -19,6 +19,11 @@ function MainLog() {
             setPassword(event.target.value);
         }
 
+    };
+
+    const routeChange = () => {
+        let path = "/movies";
+        navigate(path);
     };
 
     const buttonHandler = () => {
@@ -75,6 +80,7 @@ function MainLog() {
         .then(data => {
             if (data.result) {
                 setMessage("Login successful!");
+                routeChange();
             } else {
                 setMessage("Invalid email or password.");
             }
