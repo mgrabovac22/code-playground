@@ -13,6 +13,19 @@ exports.getMovies = function(req, res) {
     })
 }
 
+exports.getMovieName = function(req, res) { 
+    res.type("application/json");
+
+    let movieDAO = new MovieDAO();
+
+    movieDAO.getMovieName().then((result) => {
+        res.send(result);
+
+    }).catch((err) => {
+        res.send(err);
+    })
+}
+
 exports.getOneMovie = function(req, res) { 
     res.type("application/json");
 

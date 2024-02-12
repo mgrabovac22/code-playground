@@ -1,0 +1,103 @@
+#headerMainMoviesTitle{
+    font-family:'Times New Roman', Times, serif;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 20px;
+    
+}
+#headerMovie{
+    display: flex;
+    background-color: #3B3939;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+}
+#navMoviesBooksShows{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+.NavButtonsBut{
+    height:40px;
+    width:200px;
+    background-color: dimgray;
+}
+#footerMainMov{
+    text-align: center;
+    background-color: #3B3939;
+    height: 8vh;
+    
+}
+#logoFooterMainMovies{
+    padding-top: 3vh;
+}
+#mainMoviesCont{
+    background-color: dimgray;
+    margin: 0;
+}
+#listMoviesClick ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    flex-grow: 1;
+    padding-bottom: 8vh;
+}
+  
+#listMoviesClick ul li {
+    margin-bottom: 10px;
+    border: black;
+    border: solid;
+    padding-left: 40px;
+    padding-right: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#listMoviesClickCont{
+    display: flex;
+    text-align: left;
+    background-color: #524F4F;
+    margin: 0;
+}
+#mainContMovies{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-top: 12vh;
+    min-height: 80vh;
+}
+#movieInfoCont{
+    margin-left: 200px;
+    margin-top: 100px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+}
+.infoMovies{
+    padding-top: 30px;
+}
+#moviesInfo font {
+    font-family:'Times New Roman', Times, serif, sans-serif;
+}
+
+#mainPageMovies {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#footerMainMov {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #3B3939;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#footerMainMov p {
+    margin: 0;
+}
+

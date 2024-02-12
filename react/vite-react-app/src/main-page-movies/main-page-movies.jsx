@@ -1,21 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './main-page-movies.css';
-
-import FooterMainMovies from "./footer-components/Footer-main-movies";
 
 function MainMovies(){
 
-    return(
-        <>
-            <header>
-                <h1>Movie Knight</h1>
-            </header>
-            <main>
-                <p>To be continued....</p>
-            </main>
-            <FooterMainMovies/>
+    const [movies, setMovies] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
-        </>
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/movies");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                setMovies(data);
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        };
+
+        fetchMovies();
+    }, []);
+
+    const handleClick = (movie) => {
+        setSelectedMovie(movie);
+    };
+
+    return (
+        <div id="mainPageMovies">
+            <header>
+                <div id="headerMovie">
+                    <div id="headerMainMoviesTitle">
+                        <font size="50">Movie Knight</font>
+                    </div>
+
+                    <div id="navMoviesBooksShows">
+                        <div className="NavButtons">
+                            <button className="NavButtonsBut">Movies</button>
+                        </div>
+                        <div className="NavButtons">
+                            <button className="NavButtonsBut">Shows</button>
+                        </div>
+                        <div className="NavButtons">
+                            <button className="NavButtonsBut">Books</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div id="mainContMovies">
+                    <div id="listMoviesClickCont">
+                        <div id="listMoviesClick">
+                            <ul>
+                                {movies.map((movie, index) => (
+                                    <li key={index} onClick={() => handleClick(movie)}>
+                                        <font size="5">{movie.movie_name}</font>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="movieInfoCont">
+                        {selectedMovie && (
+                            <div id="moviesInfo">
+                                <font size="8" >{selectedMovie.movie_name}</font>
+                                <h2 className="infoMovies">Release Year: {selectedMovie.movie_release_year}</h2>
+                                <h2 className="infoMovies">Genre: {selectedMovie.movie_genre}</h2>
+                                <h2 className="infoMovies">Grade: {selectedMovie.movie_grade}</h2>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <div id="footerMainMov">
+                    <p id="logoFooterMainMovies"> &copy; 2023 Marin Grabovac</p>
+                </div>
+            </footer>
+        </div>
     );
 }
 
