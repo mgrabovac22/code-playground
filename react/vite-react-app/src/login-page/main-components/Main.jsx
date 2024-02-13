@@ -47,7 +47,6 @@ function MainLog() {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             if (data.result) {
                 setMessage("Login successful!");
                 routeChange();

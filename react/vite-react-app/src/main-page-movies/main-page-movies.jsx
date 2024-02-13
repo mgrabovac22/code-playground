@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './main-page-movies.css';
 
 function MainMovies(){
 
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -22,6 +25,11 @@ function MainMovies(){
 
         fetchMovies();
     }, []);
+
+    const routeChangeToBooks = () => {
+        let path = "/books";
+        navigate(path);
+    };
 
     const handleClick = (movie) => {
         setSelectedMovie(movie);
@@ -43,7 +51,7 @@ function MainMovies(){
                             <button className="NavButtonsBut">Shows</button>
                         </div>
                         <div className="NavButtons">
-                            <button className="NavButtonsBut">Books</button>
+                            <button onClick={() => routeChangeToBooks()} className="NavButtonsBut">Books</button>
                         </div>
                     </div>
                 </div>
