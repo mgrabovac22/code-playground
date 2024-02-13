@@ -54,6 +54,11 @@ function MainBooks(){
         navigate(path);
     };
 
+    const routeChangeToShows = () => {
+        let path = "/shows";
+        navigate(path);
+    };
+
     return (
         <div id="mainPageBooks">
             <header>
@@ -64,13 +69,13 @@ function MainBooks(){
 
                     <div id="navMoviesBooksShows">
                         <div className="NavButtons">
-                            <button onClick={() => routeChangeToMovies()} className="NavButtonsBut">Movies</button>
+                            <a onClick={() => routeChangeToMovies()} className="NavButtonsBut">Movies</a>
                         </div>
                         <div className="NavButtons">
-                            <button className="NavButtonsBut">Shows</button>
+                            <span onClick={() => routeChangeToShows()} className="NavButtonsBut">Shows</span>
                         </div>
-                        <div className="NavButtons">
-                            <button className="NavButtonsBut">Books</button>
+                        <div id="currentPageNavCont" className="NavButtons">
+                            <a id="currentPageNav" className="NavButtonsBut">Books</a>
                         </div>
                     </div>
                 </div>

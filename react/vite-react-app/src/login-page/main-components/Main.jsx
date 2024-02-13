@@ -73,7 +73,7 @@ function MainLog() {
                         <h2 className="labelLog">Enter your email</h2>
                         <div className="inputR">
                             <img className="icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png" width="50" height="60" alt="Icon" />
-                            <input onChange={inputHandler} className="input-field" type="text" placeholder="Email" name="emailInt" />
+                            <input onChange={inputHandler} className="input-field" type="text" placeholder="Email" name="emailInt" autoComplete="username"/>
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@ function MainLog() {
                         <h2 className="labelLog">Enter your password</h2>
                         <div className="inputR">
                             <img className="icon" src="https://cdn-icons-png.flaticon.com/512/805/805333.png" width="50" height="60" alt="Icon" />
-                            <input onChange={inputHandler} className="input-field" type="password" placeholder="Password" name="PassInt" />
+                            <input onChange={inputHandler} className="input-field" type="password" placeholder="Password" name="PassInt" autoComplete="current-password"/>
                         </div>
                     </div>
 

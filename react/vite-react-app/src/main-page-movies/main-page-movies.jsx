@@ -31,6 +31,11 @@ function MainMovies(){
         navigate(path);
     };
 
+    const routeChangeToShows = () => {
+        let path = "/shows";
+        navigate(path);
+    };
+
     const handleClick = (movie) => {
         setSelectedMovie(movie);
     };
@@ -44,14 +49,14 @@ function MainMovies(){
                     </div>
 
                     <div id="navMoviesBooksShows">
-                        <div className="NavButtons">
-                            <button className="NavButtonsBut">Movies</button>
+                        <div id="currentPageNavCont" className="NavButtons">
+                            <a id="currentPageNav" className="NavButtonsBut">Movies</a>
                         </div>
                         <div className="NavButtons">
-                            <button className="NavButtonsBut">Shows</button>
+                            <span onClick={() => routeChangeToShows()} className="NavButtonsBut">Shows</span>
                         </div>
                         <div className="NavButtons">
-                            <button onClick={() => routeChangeToBooks()} className="NavButtonsBut">Books</button>
+                            <a onClick={() => routeChangeToBooks()} className="NavButtonsBut">Books</a>
                         </div>
                     </div>
                 </div>
