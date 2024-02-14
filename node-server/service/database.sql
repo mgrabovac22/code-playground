@@ -18,7 +18,7 @@ CREATE TABLE `author` (
 --
 
 LOCK TABLES `author` WRITE;
-INSERT INTO `author` VALUES (1,'Mario Puzo');
+INSERT INTO `author` VALUES (1,'Mario Puzo'), ('2', 'F. Scott Fitzgerald'), ('3', 'Miguel de Cervantes'), ('4', 'Herman Melville'), ('5', 'Leo Tolstoy'), ('6', 'Fyodor Dostoevsky'), ('7', 'J. D. Salinger'), ('8', 'George Orwell'), ('9', 'Jane Austen'), ('10', 'Christian Church');
 UNLOCK TABLES;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `book` (
 --
 
 LOCK TABLES `book` WRITE;
-INSERT INTO `book` VALUES (3,'Godfather','Mafia',1969,'1',1,5);
+INSERT INTO `book` VALUES (1,'Godfather','Mafia',1969,'1',1,5), ('2', 'The Great Gatsby', 'Adventure', '1922', '2', '1', '5'), ('3', 'Don Quixote', 'Adventure', '1605', '3', '1', '5'), ('4', 'Moby Dick', 'Adventure', '1851', '4', '1', '4'), ('5', 'War and Peace', 'Historical', '1906', '5', '1', '5'), ('6', 'Crime and Punishment', 'Tragedy', '1866', '6', '1', '5'), ('7', 'The Catcher in the Rye', 'Drama', '1945', '7', '1', '4'), ('8', '1984', 'Drama', '1949', '8', '1', '3'), ('9', 'Pride and Prejudice', 'Drama', '1813', '9', '1', '2'), ('10', 'The Bible', 'Gods word', '0000', '10', '1', '6');
 UNLOCK TABLES;
 
 --
@@ -69,6 +69,7 @@ CREATE TABLE `book_author_fk_table` (
 --
 
 LOCK TABLES `book_author_fk_table` WRITE;
+INSERT INTO `book_author_fk_table` VALUES ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10');
 UNLOCK TABLES;
 
 --
@@ -136,7 +137,7 @@ CREATE TABLE `movie` (
 --
 
 LOCK TABLES `movie` WRITE;
-INSERT INTO `movie` VALUES (4,'Godfather',1972,5,'Mafia',1);
+INSERT INTO `movie` VALUES (1,'Godfather',1972,5,'Mafia',1), ('2', 'Godfather 2', '1980', '5', 'Mafia', '1'), ('3', 'Godfather 3', '1992', '5', 'Mafia', '1'), ('4', 'Kingdom of heaven', '2016', '5', 'Historical', '1'), ('5', 'Home alone', '1994', '4', 'Drama', '1'), ('6', 'Oppenheimer', '2023', '5', 'Historical/Drama', '1'), ('7', 'Guy Ritchies The convent', '2023', '5', 'Action', '1'), ('8', 'Forest Gump', '1994', '5', 'Drama', '1'), ('9', 'The Batman', '2023', '5', 'Action', '1'), ('10', 'Purple hearts', '2022', '5', 'Romance', '1');
 UNLOCK TABLES;
 
 --
@@ -193,6 +194,7 @@ CREATE TABLE `show` (
   `rating` int NOT NULL,
   `episodes` int NOT NULL,
   `users` int NOT NULL,
+  `release_year` int NOT NULL,
   PRIMARY KEY (`idshows`),
   UNIQUE KEY `idshows_UNIQUE` (`idshows`),
   KEY `users_idx` (`users`),
@@ -204,7 +206,7 @@ CREATE TABLE `show` (
 --
 
 LOCK TABLES `show` WRITE;
-INSERT INTO `show` VALUES (3,'Suits','Drama',5,108,1);
+INSERT INTO `show` VALUES (1,'Suits','Drama',5,108,1, 2011), ('2', 'The breaking bad', 'Drama', '5', '62', '1', '2008'), ('3', 'Better call Saul', 'Drama', '5', '63', '1', '2015'), ('4', 'Friends', 'Sitcom', '5', '236', '1', '1994'), ('5', 'The big bang theory', 'Sitcom', '5', '279', '1', '2007'), ('6', 'Taboo', 'Action/Horror', '4', '8', '1', '2017'), ('7', 'NCIS', 'Drama', '5', '457', '1', '2003'), ('8', 'The witcher', 'Action', '3', '24', '1', '2019'), ('9', 'Yellowstone', 'Western', '5', '47', '1', '2018'), ('10', 'The punisher', 'Action', '5', '24', '1', '2017');
 UNLOCK TABLES;
 
 --
