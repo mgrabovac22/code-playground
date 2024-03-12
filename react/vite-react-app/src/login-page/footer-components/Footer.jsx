@@ -5,7 +5,7 @@ function FooterLog(){
 
     return(
         <div id="footerLog">
-            <p> &copy; 2023 Marin Grabovac</p>
+            <p> &copy; 2024 Marin Grabovac</p>
         </div>
     );
 }

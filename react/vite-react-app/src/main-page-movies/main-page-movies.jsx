@@ -91,7 +91,7 @@ function MainMovies(){
 
             <footer>
                 <div id="footerMainMov">
-                    <p id="logoFooterMainMovies"> &copy; 2023 Marin Grabovac</p>
+                    <p id="logoFooterMainMovies"> &copy; 2024 Marin Grabovac</p>
                 </div>
             </footer>
         </div>

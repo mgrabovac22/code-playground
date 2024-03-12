@@ -92,7 +92,7 @@ function MainShows(){
 
             <footer>
                 <div id="footerMainMov">
-                    <p id="logoFooterMainShows"> &copy; 2023 Marin Grabovac</p>
+                    <p id="logoFooterMainShows"> &copy; 2024 Marin Grabovac</p>
                 </div>
             </footer>
         </div>

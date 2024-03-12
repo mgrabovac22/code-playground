@@ -111,7 +111,7 @@ function MainBooks(){
 
             <footer>
                 <div id="footerMainMov">
-                    <p id="logoFooterMainBooks"> &copy; 2023 Marin Grabovac</p>
+                    <p id="logoFooterMainBooks"> &copy; 2024 Marin Grabovac</p>
                 </div>
             </footer>
         </div>
