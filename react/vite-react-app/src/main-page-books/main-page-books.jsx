@@ -91,6 +91,9 @@ function MainBooks(){
                                         <font size="5">{book.book_name}</font>
                                     </li>
                                 ))}
+                                <li>
+                                    <font id="plusButton" size="6"><b>+</b></font>
+                                </li>
                             </ul>
                         </div>
                     </div>

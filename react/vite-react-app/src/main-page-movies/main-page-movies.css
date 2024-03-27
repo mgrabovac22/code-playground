@@ -111,3 +111,11 @@
     margin: 0;
 }
 
+#plusButton{
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+

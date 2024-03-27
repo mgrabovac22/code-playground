@@ -72,6 +72,9 @@ function MainShows(){
                                         <font size="5">{show.show_name}</font>
                                     </li>
                                 ))}
+                                <li>
+                                    <font id="plusButton" size="6"><b>+</b></font>
+                                </li>
                             </ul>
                         </div>
                     </div>
