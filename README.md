@@ -1,5 +1,5 @@
-#  **Introducion about me(M4R1N-003)**
-### **Marin Grabovac** aka M4R1N-003 - computer science student at the *faculty of organization and informatics*. I am currently in my second semester. Being 19 years old and starting studying computer science is not very easy, but I am menaging it.
+#  **Introducion about me(mgrabovac22)**
+### **Marin Grabovac** aka mgrabovac22 - computer science student at the *faculty of organization and informatics*. I am currently in my second semester. Being 19 years old and starting studying computer science is not very easy, but I am menaging it.
 ##  Ways to contact me:
 ### Here is my linkedin account: [www.linkedin.com/in/marin-grabovac-7bb447260].
 ### My email adress is: **[grabovacmarin000@gmail.com]**.
