@@ -4,9 +4,16 @@ import './main-page-books.css';
 
 function MainBooks(){
 
-    const [books, setbooks] = useState([]);
+    const [books, setBooks] = useState([]);
     const [selectedBook, setSelectedBook] = useState(null);
     const [author, setAuthor] = useState([]);
+    const [showAddBook, setShowAddBook] = useState(false);
+    const [newBook, setNewBook] = useState({
+        book_name: '',
+        book_release_year: '',
+        genre_book: '',
+        // Add other properties for author, grade, etc.
+    });
 
     const navigate = useNavigate();
     
@@ -18,7 +25,7 @@ function MainBooks(){
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
-                setbooks(data);
+                setBooks(data);
             } catch (error) {
                 console.error('Error fetching books:', error);
             }
@@ -46,7 +53,45 @@ function MainBooks(){
     }, [selectedBook]);
 
     const handleClick = (book) => {
-        setSelectedBook(book);
+        setSelectedBook(prevSelectedBook => {
+            // If the same book is clicked again, deselect it
+            if (prevSelectedBook === book) {
+                return null;
+            } else {
+                return book;
+            }
+        });
+    };
+
+    const handleAddBookClick = () => {
+        setShowAddBook(true);
+    };
+
+    const handleAddBook = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/books", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newBook)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            // Clear the input fields and hide the add book section
+            setNewBook({
+                book_name: '',
+                book_release_year: '',
+                genre_book: '',
+                // Add other properties for author, grade, etc.
+            });
+            setShowAddBook(false);
+        } catch (error) {
+            console.error('Error adding book:', error);
+        }
     };
 
     const routeChangeToMovies = () => {
@@ -92,21 +137,46 @@ function MainBooks(){
                                     </li>
                                 ))}
                                 <li>
-                                    <font id="plusButton" size="6"><b>+</b></font>
+                                    <font id="plusButton" size="6"><b onClick={handleAddBookClick}>+</b></font>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <div id="bookInfoCont">
-                        {selectedBook && (
+                        {!showAddBook && selectedBook && (
                             <div id="booksInfo">
-                                <font size="8" >{selectedBook.book_name}</font>
+                                <font size="8">{selectedBook.book_name}</font>
                                 <h2 className="infoBooks">Release Year: {selectedBook.book_release_year}</h2>
                                 <h2 className="infoBooks">Genre: {selectedBook.genre_book}</h2>
                                 {author.length > 0 && <h2 className="infoBooks">Author: {author[0].author_name}</h2>}
                                 <h2 className="infoBooks">Grade: {selectedBook.grade}</h2>
                             </div>                        
+                        )}
+
+                        {showAddBook && (
+                            <div>
+                                <input
+                                    type="text"
+                                    value={newBook.book_name}
+                                    onChange={(e) => setNewBook({ ...newBook, book_name: e.target.value })}
+                                    placeholder="Book Name"
+                                />
+                                <input
+                                    type="text"
+                                    value={newBook.book_release_year}
+                                    onChange={(e) => setNewBook({ ...newBook, book_release_year: e.target.value })}
+                                    placeholder="Release Year"
+                                />
+                                <input
+                                    type="text"
+                                    value={newBook.genre_book}
+                                    onChange={(e) => setNewBook({ ...newBook, genre_book: e.target.value })}
+                                    placeholder="Genre"
+                                />
+                                {/* Add input fields for author, grade, etc. */}
+                                <button onClick={handleAddBook}>Save</button>
+                            </div>
                         )}
                     </div>
                 </div>
