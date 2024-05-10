@@ -1,10 +1,9 @@
 const dgram = require("dgram");
-const { exit } = require("process");
 
-const serverIP = "10.85.10.70"; 
+const serverIP = "127.0.0.1"; 
 const serverPort = 3000; 
 
-const JMBAG = "0016123456";
+const JMBAG = "0016160563";
 const ime = "Marin";
 const prezime = "Grabovac";
 
