@@ -1,0 +1,25 @@
+.container {
+    position: relative;
+    width: 150px; 
+    height: 150px;
+  }
+  
+  .image {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  
+  .link {
+    position: absolute;
+    z-index: 2; 
+    bottom: 0; 
+    left: 50%;
+    bottom:20%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+  }
+  

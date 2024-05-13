@@ -1,0 +1,83 @@
+#MainLog{
+    background-color: dimgray;
+    display: flex;
+    flex-direction: row;    
+}
+.inputR{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2vh;
+    padding-top: 1vh;
+}
+.icon{
+    padding-right: 10px;
+}
+.input-field{
+    width: 500px;
+    height: 60px;
+    background-color: gray;
+}
+input,
+input::placeholder {
+    font: 1.25rem/3 sans-serif;
+    color:rgb(66, 62, 62);
+    padding-left: 5px;
+}
+
+#formDiv{
+    padding-left: 300px;
+    padding-top: 3vh;
+}
+
+.labelLog{
+    padding-left: 60px;
+}
+
+#buttonCont{
+    padding-top: 30px;
+    padding-left: 60px;
+}
+
+#submitLog {
+    width: auto;
+    padding: 15px 36px;
+    background-color: gray;
+    color:rgb(66, 62, 62);
+    font: sans-serif;
+    font-size: large;
+}
+
+#submitLog:hover {
+    opacity: 0.8;
+}
+
+#backLinkLog{
+    padding-top: 2vh;
+    padding-left: 10px;
+}
+
+#LinkBackLog{
+    text-decoration: underline;
+    color: black;
+    font-style: italic;
+}
+
+#img2Log1{
+    padding-left: 360px;
+    padding-top: 2vh;
+}
+
+#img1Log1{
+    padding-top: 57vh;
+}
+#errorMess{
+    color: red;
+    border: 20px;
+    border-color: red
+}
+#checkingAcc{
+    display: flex;
+    flex-direction: row;
+    padding-left: 60px;
+}
+

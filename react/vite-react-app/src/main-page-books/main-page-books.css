@@ -1,0 +1,113 @@
+#headerMainBooksTitle{
+    font-family:'Times New Roman', Times, serif;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 20px;
+    
+}
+#headerBook{
+    display: flex;
+    background-color: #3B3939;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+}
+#navMoviesBooksShows{
+    display: flex;
+    flex-direction: row;
+    text-align: end;
+    padding-top: 9.7vh;
+}
+.NavButtonsBut {
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 10px 80px;
+    text-decoration: none;
+    color: black;
+    background-color: dimgray;
+}
+#currentPageNav{
+    border-bottom-style: none;
+}
+#currentPageNavCont{
+    padding-top: 0.06vh;
+}
+#footerMainMov{
+    text-align: center;
+    background-color: #3B3939;
+    height: 8vh;
+    
+}
+#logoFooterMainBooks{
+    padding-top: 3vh;
+}
+#mainContBooks{
+    background-color: dimgray;
+    margin: 0;
+}
+#listBooksClick ul {
+    list-style-type: none;
+    text-align: center;
+    padding-left: 0;
+    flex-grow: 1;
+    padding-bottom: 8vh;
+}
+  
+#listBooksClick ul li {
+    margin-bottom: 10px;
+    border: black;
+    border: solid;
+    padding-left: 40px;
+    padding-right: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#listBooksClickCont{
+    display: flex;
+    text-align: left;
+    background-color: #524F4F;
+    margin: 0;
+}
+#mainContBooks{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-top: 12vh;
+    min-height: 80vh;
+}
+#bookInfoCont{
+    margin-left: 200px;
+    margin-top: 100px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+}
+.infoBooks{
+    padding-top: 30px;
+}
+#booksInfo font {
+    font-family:'Times New Roman', Times, serif, sans-serif;
+}
+
+#mainPageBooks {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#footerMainMov {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #3B3939;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#footerMainMov p {
+    margin: 0;
+}
+
