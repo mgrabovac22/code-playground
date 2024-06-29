@@ -110,4 +110,40 @@
 #footerMainMov p {
     margin: 0;
 }
-
+#addBookForm{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+    margin-top: 0;
+}
+input{
+    width: 300px;
+    margin: 20px;
+    height: 40px;
+}
+button{
+    width: 100px;
+}
+.kontInput{
+    display: flex;
+    flex-direction: row;
+}
+.inputAdding{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.inputAdding label{
+    padding-left: 20px;
+}
+#buttonAdd{
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}
+#buttonCancel{
+    height: 30px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}
