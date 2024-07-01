@@ -30,8 +30,8 @@ class showDAO{
     }
 
     async add(show){
-        let sql = "INSERT INTO `show` VALUES(default, ?, ?, ?, ?, ?)";
-        let result = await this.db.executeQuery(sql, [show.name, show.genre, show.rating, show.episodes, show.users, show.release_year]);
+        let sql = "INSERT INTO `show` VALUES(default, ?, ?, ?, ?, ?, ?)";
+        let result = await this.db.executeQuery(sql, [show.name, show.genre, show.grade, show.episodes, show.users, show.year]);
         return result;
     }
 

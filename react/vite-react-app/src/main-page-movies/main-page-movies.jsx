@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './main-page-movies.css';
 
-function MainMovies() {
+function MainMovies(){
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [showAddMovie, setShowAddMovie] = useState(false);
@@ -193,10 +193,10 @@ function MainMovies() {
                                             name="grade"
                                         />
                                     </div>
-                                    <div className="kontInput">
-                                        <button id="buttonAdd" onClick={handleAddMovie}>Save</button>
-                                        <button id="buttonCancel" onClick={handleCancelAddMovie}>Cancel</button>
-                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <button id="buttonAdd" onClick={handleAddMovie}>Save</button>
+                                    <button id="buttonCancel" onClick={handleCancelAddMovie}>Cancel</button>
                                 </div>
                             </div>
                         )}
