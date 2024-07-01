@@ -46,7 +46,7 @@ CREATE TABLE `book` (
 --
 
 LOCK TABLES `book` WRITE;
-INSERT INTO `book` VALUES (1,'Godfather','Mafia',1969,'1',1,5), ('2', 'The Great Gatsby', 'Adventure', '1922', '2', '1', '5'), ('3', 'Don Quixote', 'Adventure', '1605', '3', '1', '5'), ('4', 'Moby Dick', 'Adventure', '1851', '4', '1', '4'), ('5', 'War and Peace', 'Historical', '1906', '5', '1', '5'), ('6', 'Crime and Punishment', 'Tragedy', '1866', '6', '1', '5'), ('7', 'The Catcher in the Rye', 'Drama', '1945', '7', '1', '4'), ('8', '1984', 'Drama', '1949', '8', '1', '3'), ('9', 'Pride and Prejudice', 'Drama', '1813', '9', '1', '2'), ('10', 'The Bible', 'Gods word', '0000', '10', '1', '6');
+INSERT INTO `book` VALUES (1,'Godfather','Mafia',1969,'Mario Puzzo',1,5), ('2', 'The Great Gatsby', 'Adventure', '1922', 'Francis Scott Fitzgerald', '1', '5'), ('3', 'Don Quixote', 'Adventure', '1605', 'Miguel de Cervantes', '1', '5'), ('4', 'Moby Dick', 'Adventure', '1851', 'Herman Melville', '1', '4'), ('5', 'War and Peace', 'Historical', '1906', 'Lav Nikolajevič Tolstoj', '1', '5'), ('6', 'Crime and Punishment', 'Tragedy', '1866', 'Fjodor Mihajlovič Dostojevski', '1', '5'), ('7', 'The Catcher in the Rye', 'Drama', '1945', 'Jerome David Salinger', '1', '4'), ('8', '1984', 'Drama', '1949', 'George Orwell', '1', '3'), ('9', 'Pride and Prejudice', 'Drama', '1813', 'Jane Austen', '1', '2'), ('10', 'The Bible', 'Gods word', '0000', 'God', '1', '6');
 UNLOCK TABLES;
 
 --

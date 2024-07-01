@@ -110,7 +110,8 @@
 #footerMainMov p {
     margin: 0;
 }
-#addBookForm{
+
+#addMovieForm{
     display: flex;
     flex-direction: column;
     margin-left: 30%;

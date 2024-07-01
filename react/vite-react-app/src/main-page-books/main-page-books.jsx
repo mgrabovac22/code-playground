@@ -36,24 +36,6 @@ function MainBooks(){
         fetchBooks();
     }, []);
 
-    useEffect(() => {
-        const fetchAuthor = async () => {
-            try {
-                if (!selectedBook) return;
-                const response = await fetch(`http://localhost:3000/authors/${selectedBook.author_name}`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data = await response.json();
-                setAuthor(data);
-            } catch (error) {
-                console.error('Error fetching author:', error);
-            }
-        };
-
-        fetchAuthor();
-    }, [selectedBook]);
-
     const handleClick = (book) => {
         setSelectedBook(prevSelectedBook => prevSelectedBook === book ? null : book);
     };
@@ -155,7 +137,7 @@ function MainBooks(){
                                 <font size="8">{selectedBook.book_name}</font>
                                 <h2 className="infoBooks">Release Year: {selectedBook.book_release_year}</h2>
                                 <h2 className="infoBooks">Genre: {selectedBook.genre_book}</h2>
-                                {author && <h2 className="infoBooks">Author: {author.author_name}</h2>}
+                                <h2 className="infoBooks">Author: {selectedBook.author_name}</h2>
                                 <h2 className="infoBooks">Grade: {selectedBook.grade}</h2>
                             </div>
                         )}
