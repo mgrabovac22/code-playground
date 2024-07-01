@@ -12,6 +12,7 @@
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    z-index: 100;
 }
 #navMoviesBooksShows{
     display: flex;
@@ -63,6 +64,8 @@
     padding-right: 60px;
     padding-top: 10px;
     padding-bottom: 10px;
+    position: relative;
+    z-index: 10;
 }
 #listShowsClickCont{
     display: flex;
@@ -104,6 +107,7 @@
     padding: 10px;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    z-index: 100;
 }
 #footerMainMov p {
     margin: 0;
