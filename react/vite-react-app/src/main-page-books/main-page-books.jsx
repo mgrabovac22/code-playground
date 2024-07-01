@@ -190,7 +190,7 @@ function MainBooks(){
                                 </div>
                                 <div className="kontInput">
                                     <div className="inputAdding">
-                                        <label htmlFor="users">Author</label>
+                                        <label htmlFor="users">Users</label>
                                         <input
                                             type="text"
                                             value={newBook.users}
