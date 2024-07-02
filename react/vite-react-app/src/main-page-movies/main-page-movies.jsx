@@ -133,6 +133,10 @@ function MainMovies(){
                                 <h2 className="infoMovies">Release Year: {selectedMovie.movie_release_year}</h2>
                                 <h2 className="infoMovies">Genre: {selectedMovie.movie_genre}</h2>
                                 <h2 className="infoMovies">Grade: {selectedMovie.movie_grade}</h2>
+                                <div id="buttons">
+                                    <button id="deleteButton">Delete</button>
+                                    <button id="updateButton">Update</button>
+                                </div>
                             </div>
                         )}
 

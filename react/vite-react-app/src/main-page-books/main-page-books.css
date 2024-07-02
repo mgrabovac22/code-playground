@@ -152,3 +152,11 @@ button{
     margin-top: 7vh;
     margin-left: 20px;
 }
+#deleteButton{
+    margin-right: 30px;
+}
+
+button{
+    background-color: #3B3939;
+    color: aliceblue;
+}

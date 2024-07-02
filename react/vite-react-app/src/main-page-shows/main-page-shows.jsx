@@ -139,6 +139,10 @@ function MainShows() {
                                 <h2 className="infoShows">Genre: {selectedShow.genre}</h2>
                                 <h2 className="infoShows">Grade: {selectedShow.rating}</h2>
                                 <h2 className="infoShows">Number of Episodes: {selectedShow.episodes}</h2>
+                                <div id="buttons">
+                                    <button id="deleteButton">Delete</button>
+                                    <button id="updateButton">Update</button>
+                                </div>
                             </div>
                         )}
 

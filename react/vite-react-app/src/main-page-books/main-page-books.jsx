@@ -76,6 +76,7 @@ function MainBooks(){
         }
     };
 
+    
     const handleCancelAddBook = () => {
         setShowAddBook(false);
         setNewBook({
@@ -88,6 +89,29 @@ function MainBooks(){
         });
     };
 
+    const handleDeleteBook = async () => {
+        if (!selectedBook) {
+            console.error('No book selected for deletion');
+            return;
+        }
+    
+        try {
+            const response = await fetch(`http://localhost:3000/books/${selectedBook.idBook}`, {
+                method: 'DELETE'
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            setBooks((prevBooks) => prevBooks.filter(book => book.idBook !== selectedBook.idBook));
+            setSelectedBook(null);
+        } catch (error) {
+            console.error('Error deleting book:', error);
+        }
+    };
+    
+    
     const routeChangeToMovies = () => navigate("/movies");
     const routeChangeToShows = () => navigate("/shows");
 
@@ -139,6 +163,10 @@ function MainBooks(){
                                 <h2 className="infoBooks">Genre: {selectedBook.genre_book}</h2>
                                 <h2 className="infoBooks">Author: {selectedBook.author_name}</h2>
                                 <h2 className="infoBooks">Grade: {selectedBook.grade}</h2>
+                                <div id="buttons">
+                                    <button id="deleteButton" onClick={handleDeleteBook}>Delete</button>
+                                    <button id="updateButton">Update</button>
+                                </div>
                             </div>
                         )}
 
