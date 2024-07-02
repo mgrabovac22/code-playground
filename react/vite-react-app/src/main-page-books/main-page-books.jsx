@@ -6,7 +6,6 @@ function MainBooks(){
 
     const [books, setBooks] = useState([]);
     const [selectedBook, setSelectedBook] = useState(null);
-    const [author, setAuthor] = useState(null);
     const [showAddBook, setShowAddBook] = useState(false);
     const [newBook, setNewBook] = useState({
         name: '',

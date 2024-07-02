@@ -83,6 +83,28 @@ function MainMovies(){
         });
     };
 
+    const handleDeleteMovie = async () => {
+        if (!selectedMovie) {
+            console.error('No movie selected for deletion');
+            return;
+        }
+    
+        try {
+            const response = await fetch(`http://localhost:3000/movies/${selectedMovie.idMovie}`, {
+                method: 'DELETE'
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            setMovies((prevMovies) => prevMovies.filter(movie => movie.idMovie !== selectedMovie.idMovie));
+            setSelectedMovie(null);
+        } catch (error) {
+            console.error('Error deleting movie:', error);
+        }
+    };
+
     const routeChangeToBooks = () => navigate("/books");
     const routeChangeToShows = () => navigate("/shows");
 
@@ -134,7 +156,7 @@ function MainMovies(){
                                 <h2 className="infoMovies">Genre: {selectedMovie.movie_genre}</h2>
                                 <h2 className="infoMovies">Grade: {selectedMovie.movie_grade}</h2>
                                 <div id="buttons">
-                                    <button id="deleteButton">Delete</button>
+                                    <button id="deleteButton" onClick={handleDeleteMovie}>Delete</button>
                                     <button id="updateButton">Update</button>
                                 </div>
                             </div>
