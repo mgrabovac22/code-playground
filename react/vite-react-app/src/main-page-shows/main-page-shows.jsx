@@ -88,6 +88,28 @@ function MainShows() {
         });
     };
 
+    const handleDeleteShow = async () => {
+        if (!selectedShow) {
+            console.error('No show selected for deletion');
+            return;
+        }
+    
+        try {
+            const response = await fetch(`http://localhost:3000/shows/${selectedShow.idshows}`, {
+                method: 'DELETE'
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            setShows((prevShows) => prevShows.filter(show => show.idshows !== selectedShow.idshows));
+            setSelectedShows(null);
+        } catch (error) {
+            console.error('Error deleting show:', error);
+        }
+    };
+
     const routeChangeToBooks = () => navigate("/books");
     const routeChangeToMovies = () => navigate("/movies");
 
@@ -140,7 +162,7 @@ function MainShows() {
                                 <h2 className="infoShows">Grade: {selectedShow.rating}</h2>
                                 <h2 className="infoShows">Number of Episodes: {selectedShow.episodes}</h2>
                                 <div id="buttons">
-                                    <button id="deleteButton">Delete</button>
+                                    <button id="deleteButton" onClick={handleDeleteShow}>Delete</button>
                                     <button id="updateButton">Update</button>
                                 </div>
                             </div>
