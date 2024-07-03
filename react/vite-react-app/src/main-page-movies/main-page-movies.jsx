@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './main-page-movies.css';
 
-function MainMovies(){
+function MainMovies() {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [showAddMovie, setShowAddMovie] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editableMovie, setEditableMovie] = useState(null);
     const [newMovie, setNewMovie] = useState({
         name: '',
         year: '',
@@ -88,21 +90,82 @@ function MainMovies(){
             console.error('No movie selected for deletion');
             return;
         }
-    
+
         try {
             const response = await fetch(`http://localhost:3000/movies/${selectedMovie.idMovie}`, {
                 method: 'DELETE'
             });
-    
+
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-    
+
             setMovies((prevMovies) => prevMovies.filter(movie => movie.idMovie !== selectedMovie.idMovie));
             setSelectedMovie(null);
         } catch (error) {
             console.error('Error deleting movie:', error);
         }
+    };
+
+    const handleEditMovieClick = (movie) => {
+        setIsEditing(true);
+        setEditableMovie(movie);
+    };
+
+    const handleUpdateMovie = async () => {
+        const updates = [
+            { 
+                element: 'movie_name', 
+                value: editableMovie.movie_name 
+            },
+            { 
+                element: 'movie_release_year', 
+                value: editableMovie.movie_release_year 
+            },
+            { 
+                element: 'movie_genre', 
+                value: editableMovie.movie_genre 
+            },
+            { 
+                element: 'user', 
+                value: editableMovie.user 
+            },
+            { 
+                element: 'movie_grade', 
+                value: editableMovie.movie_grade 
+            },
+        ];
+
+        try {
+            for (let update of updates) {
+                const response = await fetch(`http://localhost:3000/movies/${editableMovie.idMovie}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        element: update.element,
+                        elementValue: update.value
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            }
+
+            setMovies((prevMovies) => prevMovies.map(movie => movie.idMovie === editableMovie.idMovie ? editableMovie : movie));
+            setIsEditing(false);
+            setEditableMovie(null);
+            setSelectedMovie(editableMovie);
+        } catch (error) {
+            console.error('Error updating movie:', error);
+        }
+    };
+
+    const handleCancelUpdateMovie = () => {
+        setIsEditing(false);
+        setEditableMovie(null);
     };
 
     const routeChangeToBooks = () => navigate("/books");
@@ -149,7 +212,7 @@ function MainMovies(){
                     </div>
 
                     <div id="movieInfoCont">
-                        {!showAddMovie && selectedMovie && (
+                        {!showAddMovie && selectedMovie && !isEditing && (
                             <div id="moviesInfo">
                                 <font size="8">{selectedMovie.movie_name}</font>
                                 <h2 className="infoMovies">Release Year: {selectedMovie.movie_release_year}</h2>
@@ -157,7 +220,7 @@ function MainMovies(){
                                 <h2 className="infoMovies">Grade: {selectedMovie.movie_grade}</h2>
                                 <div id="buttons">
                                     <button id="deleteButton" onClick={handleDeleteMovie}>Delete</button>
-                                    <button id="updateButton">Update</button>
+                                    <button id="updateButton" onClick={() => handleEditMovieClick(selectedMovie)}>Update</button>
                                 </div>
                             </div>
                         )}
@@ -175,7 +238,7 @@ function MainMovies(){
                                             name="name"
                                         />
                                     </div>
-                                    <div className="inputAdding">   
+                                    <div className="inputAdding">
                                         <label htmlFor="year">Year</label>
                                         <input
                                             type="text"
@@ -209,7 +272,7 @@ function MainMovies(){
                                     </div>
                                 </div>
                                 <div className="kontInput">
-                                    <div className="inputAdding">  
+                                    <div className="inputAdding">
                                         <label htmlFor="grade">Grade</label>
                                         <input
                                             type="text"
@@ -223,6 +286,71 @@ function MainMovies(){
                                 <div className="kontInput">
                                     <button id="buttonAdd" onClick={handleAddMovie}>Save</button>
                                     <button id="buttonCancel" onClick={handleCancelAddMovie}>Cancel</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {isEditing && editableMovie && (
+                            <div id="updateMovieForm">
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="name">Name</label>
+                                        <input
+                                            type="text"
+                                            value={editableMovie.movie_name}
+                                            onChange={(e) => setEditableMovie({ ...editableMovie, movie_name: e.target.value })}
+                                            placeholder="Movie Name"
+                                            name="name"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="year">Year</label>
+                                        <input
+                                            type="text"
+                                            value={editableMovie.movie_release_year}
+                                            onChange={(e) => setEditableMovie({ ...editableMovie, movie_release_year: e.target.value })}
+                                            placeholder="Release Year"
+                                            name="year"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="genre">Genre</label>
+                                        <input
+                                            type="text"
+                                            value={editableMovie.movie_genre}
+                                            onChange={(e) => setEditableMovie({ ...editableMovie, movie_genre: e.target.value })}
+                                            placeholder="Genre"
+                                            name="genre"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="users">User</label>
+                                        <input
+                                            type="text"
+                                            value={editableMovie.user}
+                                            onChange={(e) => setEditableMovie({ ...editableMovie, user: e.target.value })}
+                                            placeholder="Users"
+                                            name="users"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="grade">Grade</label>
+                                        <input
+                                            type="text"
+                                            value={editableMovie.movie_grade}
+                                            onChange={(e) => setEditableMovie({ ...editableMovie, movie_grade: e.target.value })}
+                                            placeholder="Grade"
+                                            name="grade"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <button id="buttonUpdate" onClick={handleUpdateMovie}>Save</button>
+                                    <button id="buttonCancel" onClick={handleCancelUpdateMovie}>Cancel</button>
                                 </div>
                             </div>
                         )}

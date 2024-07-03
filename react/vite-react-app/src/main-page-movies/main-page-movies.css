@@ -168,3 +168,13 @@ button{
     margin-left: 20px;
 }
 
+#updateMovieForm{
+    margin-left: 30%;
+}
+
+#buttonUpdate{
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}
