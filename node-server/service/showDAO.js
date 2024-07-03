@@ -36,7 +36,7 @@ class showDAO{
     }
 
     async update(ID, element, elementValue){
-        let sql = `UPDATE show SET ${element} = ? WHERE idshows = ?`;
+        let sql = `UPDATE \`show\` SET ${element} = ? WHERE idshows = ?`;
         let result = await this.db.executeQuery(sql, [elementValue, ID]);
         return result;
     }
