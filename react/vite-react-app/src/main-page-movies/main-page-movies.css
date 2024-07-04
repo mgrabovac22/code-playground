@@ -12,6 +12,7 @@
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    z-index: 100;
 }
 #navMoviesBooksShows{
     display: flex;
@@ -62,6 +63,8 @@
     padding-right: 60px;
     padding-top: 10px;
     padding-bottom: 10px;
+    position: relative;
+    z-index: 10;
 }
 #listMoviesClickCont{
     display: flex;
@@ -105,6 +108,7 @@
     padding: 10px;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    z-index: 100;
 }
 
 #footerMainMov p {
@@ -119,3 +123,58 @@
     padding-right: 10px;
 }
 
+#addMovieForm{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+    margin-top: 0;
+}
+
+input{
+    width: 300px;
+    margin: 20px;
+    height: 40px;
+}
+
+button{
+    width: 100px;
+}
+
+.kontInput{
+    display: flex;
+    flex-direction: row;
+}
+
+.inputAdding{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.inputAdding label{
+    padding-left: 20px;
+}
+
+#buttonAdd{
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}
+
+#buttonCancel{
+    height: 30px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}
+
+#updateMovieForm{
+    margin-left: 30%;
+}
+
+#buttonUpdate{
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 7vh;
+    margin-left: 20px;
+}

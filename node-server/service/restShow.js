@@ -44,7 +44,9 @@ exports.update = function(req, res) {
 
     let showDAO = new ShowDAO();
 
-    showDAO.update(req.params.ID, req.body.show).then((result) => {
+    const { element, elementValue } = req.body;
+
+    showDAO.update(req.params.ID, element, elementValue).then((result) => {
         res.send(result);
 
     }).catch((err) => {

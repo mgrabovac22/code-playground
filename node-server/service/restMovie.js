@@ -57,7 +57,9 @@ exports.update = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
+    const { element, elementValue } = req.body;
+
+    movieDAO.update(req.params.ID, element, elementValue).then((result) => {
         res.send(result);
 
     }).catch((err) => {

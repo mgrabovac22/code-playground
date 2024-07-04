@@ -2,10 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './main-page-shows.css';
 
-function MainShows(){
-
+function MainShows() {
     const [shows, setShows] = useState([]);
     const [selectedShow, setSelectedShow] = useState(null);
+    const [showAddShow, setShowAddShow] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editableShow, setEditableShow] = useState(null);
+    const [newShow, setNewShow] = useState({
+        name: '',
+        genre: '',
+        grade: '',
+        episodes: '',
+        users: '',
+        year: ''
+    });
 
     const navigate = useNavigate();
 
@@ -26,19 +36,148 @@ function MainShows(){
         fetchShows();
     }, []);
 
-    const routeChangeToBooks = () => {
-        let path = "/books";
-        navigate(path);
-    };
-
-    const routeChangeToMovies = () => {
-        let path = "/movies";
-        navigate(path);
-    };
-
     const handleClick = (show) => {
-        setSelectedShow(show);
+        setSelectedShow(prevSelectedShow => prevSelectedShow === show ? null : show);
     };
+
+    const handleAddShowClick = () => {
+        setShowAddShow(true);
+    };
+
+    const handleAddShow = async () => {
+        try {
+            console.log('Adding show:', newShow);
+            const response = await fetch("http://localhost:3000/shows", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newShow)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const addedShow = await response.json();
+            console.log('Show added:', addedShow);
+
+            setShows([...shows, addedShow]);
+            setNewShow({
+                name: '',
+                genre: '',
+                grade: '',
+                episodes: '',
+                users: '',
+                year: ''
+            });
+            setShowAddShow(false);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error adding show:', error);
+        }
+    };
+
+    const handleCancelAddShow = () => {
+        setShowAddShow(false);
+        setNewShow({
+            name: '',
+            genre: '',
+            grade: '',
+            episodes: '',
+            users: '',
+            year: ''
+        });
+    };
+
+    const handleDeleteShow = async () => {
+        if (!selectedShow) {
+            console.error('No show selected for deletion');
+            return;
+        }
+    
+        try {
+            const response = await fetch(`http://localhost:3000/shows/${selectedShow.idshows}`, {
+                method: 'DELETE'
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            setShows((prevShows) => prevShows.filter(show => show.idshows !== selectedShow.idshows));
+            setSelectedShow(null);
+        } catch (error) {
+            console.error('Error deleting show:', error);
+        }
+    };
+
+    const handleEditShowClick = (show) => {
+        setIsEditing(true);
+        setEditableShow(show);
+    };
+
+    const handleUpdateShow = async () => {
+        const updates = [
+            {
+                element: 'show_name',
+                value: editableShow.show_name
+            },
+            {
+                element: 'release_year',
+                value: editableShow.release_year
+            },
+            {
+                element: 'genre',
+                value: editableShow.genre
+            },
+            {
+                element: 'users',
+                value: editableShow.users
+            },
+            {
+                element: 'rating',
+                value: editableShow.rating
+            },
+            {
+                element: 'episodes',
+                value: editableShow.episodes
+            }
+        ];
+        try {
+            for (let update of updates) {
+                const response = await fetch(`http://localhost:3000/shows/${editableShow.idshows}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        element: update.element,
+                        elementValue: update.value
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorDetails}`);
+                }
+            };
+
+            setShows((prevShows) => prevShows.map(show => show.idshows === editableShow.idshows ? editableShow : show));
+            setIsEditing(false);
+            setEditableShow(null);
+            setSelectedShow(editableShow);
+        } catch (error) {
+            console.error('Error updating show:', error);
+        }
+    };
+
+    const handleCancelUpdateShow = () => {
+        setIsEditing(false);
+        setEditableShow(null);
+    };
+
+    const routeChangeToBooks = () => navigate("/books");
+    const routeChangeToMovies = () => navigate("/movies");
 
     return (
         <div id="mainPageShows">
@@ -47,18 +186,17 @@ function MainShows(){
                     <div id="headerMainShowsTitle">
                         <font size="50">Movie Knight</font>
                     </div>
-
-                    <div id="navMoviesBooksShows">
+                    <nav id="navMoviesBooksShows">
                         <div className="NavButtons">
-                            <a onClick={() => routeChangeToMovies()} className="NavButtonsBut">Movies</a>
+                            <a onClick={routeChangeToMovies} className="NavButtonsBut">Movies</a>
                         </div>
                         <div id="currentPageNavCont" className="NavButtons">
                             <span id="currentPageNav" className="NavButtonsBut">Shows</span>
                         </div>
                         <div className="NavButtons">
-                            <a onClick={() => routeChangeToBooks()} className="NavButtonsBut">Books</a>
+                            <a onClick={routeChangeToBooks} className="NavButtonsBut">Books</a>
                         </div>
-                    </div>
+                    </nav>
                 </div>
             </header>
 
@@ -72,21 +210,177 @@ function MainShows(){
                                         <font size="5">{show.show_name}</font>
                                     </li>
                                 ))}
-                                <li>
-                                    <font id="plusButton" size="6"><b>+</b></font>
+                                <li onClick={handleAddShowClick}>
+                                    <font id="plusButton" size="6">
+                                        <b>+</b>
+                                    </font>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <div id="showInfoCont">
-                        {selectedShow && (
+                        {!showAddShow && selectedShow && !isEditing && (
                             <div id="showsInfo">
-                                <font size="8" >{selectedShow.show_name}</font>
+                                <font size="8">{selectedShow.show_name}</font>
                                 <h2 className="infoShows">Release Year: {selectedShow.release_year}</h2>
                                 <h2 className="infoShows">Genre: {selectedShow.genre}</h2>
                                 <h2 className="infoShows">Grade: {selectedShow.rating}</h2>
-                                <h2 className="infoShows">Number of episodes: {selectedShow.episodes}</h2>
+                                <h2 className="infoShows">Number of Episodes: {selectedShow.episodes}</h2>
+                                <div id="buttons">
+                                    <button id="deleteButton" onClick={handleDeleteShow}>Delete</button>
+                                    <button id="updateButton" onClick={() => handleEditShowClick(selectedShow)}>Update</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {showAddShow && (
+                            <div id="addShowForm">
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="name">Name</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.name}
+                                            onChange={(e) => setNewShow({ ...newShow, name: e.target.value })}
+                                            placeholder="Show Name"
+                                            name="name"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">   
+                                        <label htmlFor="year">Year</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.year}
+                                            onChange={(e) => setNewShow({ ...newShow, year: e.target.value })}
+                                            placeholder="Release Year"
+                                            name="year"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="genre">Genre</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.genre}
+                                            onChange={(e) => setNewShow({ ...newShow, genre: e.target.value })}
+                                            placeholder="Genre"
+                                            name="genre"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="users">Users</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.users}
+                                            onChange={(e) => setNewShow({ ...newShow, users: e.target.value })}
+                                            placeholder="Users"
+                                            name="users"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">  
+                                        <label htmlFor="grade">Grade</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.grade}
+                                            onChange={(e) => setNewShow({ ...newShow, grade: e.target.value })}
+                                            placeholder="Grade"
+                                            name="grade"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="episodes">Episodes</label>
+                                        <input
+                                            type="text"
+                                            value={newShow.episodes}
+                                            onChange={(e) => setNewShow({ ...newShow, episodes: e.target.value })}
+                                            placeholder="Number of Episodes"
+                                            name="episodes"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <button id="buttonAdd" onClick={handleAddShow}>Save</button>
+                                    <button id="buttonCancel" onClick={handleCancelAddShow}>Cancel</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {isEditing && editableShow && (
+                            <div id="updateShowForm">
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="name">Name</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.show_name}
+                                            onChange={(e) => setEditableShow({ ...editableShow, show_name: e.target.value })}
+                                            placeholder="Show Name"
+                                            name="name"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">   
+                                        <label htmlFor="year">Year</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.release_year}
+                                            onChange={(e) => setEditableShow({ ...editableShow, release_year: e.target.value })}
+                                            placeholder="Release Year"
+                                            name="year"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">
+                                        <label htmlFor="genre">Genre</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.genre}
+                                            onChange={(e) => setEditableShow({ ...editableShow, genre: e.target.value })}
+                                            placeholder="Genre"
+                                            name="genre"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="users">Users</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.users}
+                                            onChange={(e) => setEditableShow({ ...editableShow, users: e.target.value })}
+                                            placeholder="Users"
+                                            name="users"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <div className="inputAdding">  
+                                        <label htmlFor="grade">Grade</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.rating}
+                                            onChange={(e) => setEditableShow({ ...editableShow, rating: e.target.value })}
+                                            placeholder="Grade"
+                                            name="grade"
+                                        />
+                                    </div>
+                                    <div className="inputAdding">
+                                        <label htmlFor="episodes">Episodes</label>
+                                        <input
+                                            type="text"
+                                            value={editableShow.episodes}
+                                            onChange={(e) => setEditableShow({ ...editableShow, episodes: e.target.value })}
+                                            placeholder="Number of Episodes"
+                                            name="episodes"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="kontInput">
+                                    <button id="buttonUpdate" onClick={handleUpdateShow}>Save</button>
+                                    <button id="buttonCancel" onClick={handleCancelUpdateShow}>Cancel</button>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -95,7 +389,7 @@ function MainShows(){
 
             <footer>
                 <div id="footerMainMov">
-                    <p id="logoFooterMainShows"> &copy; 2024 Marin Grabovac</p>
+                    <p id="logoFooterMainShows">&copy; 2024 Marin Grabovac</p>
                 </div>
             </footer>
         </div>
