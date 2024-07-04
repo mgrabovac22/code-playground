@@ -1,5 +1,19 @@
 {
+  "name": "movie-knight",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "install-dependencies": "npm install && cd ./node-server/service/ && npm install && cd ../../react/vite-react-app/ && npm install",
+    "start-server": "cd ./node-server/service/ && node restServer.js",
+    "build-app": "cd ./react/vite-react-app/ && npm run build",
+    "dev-app": "cd ./react/vite-react-app/ && npm run dev",
+    "open-browser": "opn http://localhost:3000/",
+    "start-movie-app": "npm run install-dependencies && concurrently \"npm run start-server\" \"npm run build-app && npm run dev-app && npm run open-browser\""
+  },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "concurrently": "^7.0.0",
+    "opn-cli": "^4.0.0"
   }
 }

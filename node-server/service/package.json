@@ -13,7 +13,8 @@
     "start": "node restServer.js",
     "dev": "node restServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:fresh": "node refreshDatabase.js"
+    "db:fresh": "node refreshDatabase.js",
+    "start-server": "npm install && node restServer.js"
   },
   "author": "Marin Grabovac",
   "license": "MIT",

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 let session = require('express-session');
+const path = require('path');
 
 const app = express();
 
@@ -78,13 +79,12 @@ const restUser = require("./restUser.js");
   app.delete("/users/:name", restUser.delete);
   app.post("/users/login", restUser.login);
 
-let fun = function(request, response) {
-  response.send('Hello world');
-};
-
-app.get('/', fun);
-
 const port = 3000;
+app.use(express.static(path.resolve("../../react/vite-react-app/dist")));
+
+app.get('/', (request, response)=>{
+  response.sendFile(__dirname + path.resolve("../../react/vite-react-app/dist/index.html"));
+});
 
 app.listen(port, () => {
   http = "http://localhost:";
