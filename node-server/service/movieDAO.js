@@ -21,6 +21,12 @@ class movieDAO{
         return result;
     }
 
+    async getMovieName(){
+        let sql = "SELECT movie_name FROM movie";
+        let result = await this.db.executeQuery(sql);
+        return result;
+    }
+
     async getElement(element, ID){
         let sql = `SELECT ${element} from movie where idMovie = ?`;
         let result = await this.db.executeQuery(sql, [ID]);

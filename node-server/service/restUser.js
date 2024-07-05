@@ -51,3 +51,22 @@ exports.delete = function(req, res) {
         res.send(err);
     })
 }
+
+exports.login = function(req, res){
+    res.type("application/json");
+
+    let userDAO = new UsersDAO();
+    userDAO.login(req.body.email, req.body.password).then((result) => {
+        if(result!=null){
+            req.session.name=result.name;
+            req.session.email=result.email;
+            res.send({"result": true});
+        }
+        else{
+            res.send({"result": false});
+        }
+        
+    }).catch((err) => {
+        res.send(err);
+    })
+}

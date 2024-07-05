@@ -1,6 +1,22 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-session": "^1.18.0",
     "mysql2": "^3.6.0"
-  }
+  },
+  "name": "service",
+  "version": "1.0.0",
+  "main": "restServer.js",
+  "scripts": {
+    "start": "node restServer.js",
+    "dev": "node restServer.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:fresh": "node refreshDatabase.js",
+    "start-server": "npm install && node restServer.js"
+  },
+  "author": "Marin Grabovac",
+  "license": "MIT",
+  "description": ""
 }

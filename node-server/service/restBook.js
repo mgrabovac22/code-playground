@@ -44,7 +44,9 @@ exports.update = function(req, res) {
 
     let bookDAO = new BookDAO();
 
-    bookDAO.update(req.params.ID, req.body.book).then((result) => {
+    const { element, elementValue } = req.body;
+
+    bookDAO.update(req.params.ID, element, elementValue).then((result) => {
         res.send(result);
 
     }).catch((err) => {

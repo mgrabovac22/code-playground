@@ -13,6 +13,19 @@ exports.getMovies = function(req, res) {
     })
 }
 
+exports.getMovieName = function(req, res) { 
+    res.type("application/json");
+
+    let movieDAO = new MovieDAO();
+
+    movieDAO.getMovieName().then((result) => {
+        res.send(result);
+
+    }).catch((err) => {
+        res.send(err);
+    })
+}
+
 exports.getOneMovie = function(req, res) { 
     res.type("application/json");
 
@@ -44,7 +57,9 @@ exports.update = function(req, res) {
 
     let movieDAO = new MovieDAO();
 
-    movieDAO.update(req.params.ID, req.body.movie).then((result) => {
+    const { element, elementValue } = req.body;
+
+    movieDAO.update(req.params.ID, element, elementValue).then((result) => {
         res.send(result);
 
     }).catch((err) => {
