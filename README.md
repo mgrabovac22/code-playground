@@ -1,12 +1,38 @@
-#  **Introducion about me(mgrabovac22)**
-### **Marin Grabovac** aka mgrabovac22 - computer science student at the *faculty of organization and informatics*. I am currently in my second semester. Being 19 years old and starting studying computer science is not very easy, but I am menaging it.
-##  Ways to contact me:
-### Here is my linkedin account: [www.linkedin.com/in/marin-grabovac-7bb447260].
-### My email adress is: **[grabovacmarin000@gmail.com]**.
-### My phone number is only given **by request**!
-# **Motivation to became a developer**
-### Well my motivation is simple really, I was always fascinated with programming and anything that is computer related. To create something like a programm that does something you want it to do, is very entertaining and interesting to the point that you want to dedicate your life to it. To be honest, I loved playing video games and that got me into computers and programming in general.
-# Favourite technology 
-## My favourite technology is blockchain. *Blockchain* is very interesting and important right now. Crypto is the future, and blockchain is providing an important metod which doesn't need a seperate entity for supervises transactions.
-# Conclusion about Git versioning system
-### Versioning systems are systems that help developers return to the previus version of a file if they encounter an error. This is very practical, because it can help you see who made an error and when it happened. Developers usually resolve this issue with a simple method, they save a different versions of a file in a different directories with a time stamp. One of the version systems is Gitkraken, and it is very practical and user friendly.
+# Code Playground
+
+## Description of the Repository
+This repository is for practicing web development. It contains HTML, CSS, JavaScript, Node.js, and React. There are three web applications and one communication program using sockets in this repository.
+
+## Structure of the Repository
+This is a detailed description of the structure.
+
+### `Web-basics`
+This is my first web application. It is a very simple page using HTML/CSS. The theme is the movie *Kingdom of Heaven*.
+
+### `Web-beginner`
+This is a moderate web application with HTML/CSS and client-side JavaScript. It has authentication, implemented with cookies. The theme of the application is the video game *Assassin's Creed: Brotherhood*. Languages are separated into separate files.
+
+### `Node-server`
+This is the backend for a web application called Movie Knight. It contains DAO files for connecting to the database, REST files for REST APIs, and files for refreshing the database. The frontend is in React and located in the folder `react/vite-react-app`.
+
+### `React`
+This directory contains two subdirectories: `my-react-app` and `vite-react-app`. The first one is just a dummy app that was used to practice the basics of React, but the second one (`vite-react-app`) is the frontend for the movie app that has a backend in Node.js. Link to Figma design: [Figma Design](https://www.figma.com/design/X8iSB8AqEExBpd1AeYPmAS/Untitled?node-id=0-1&t=ypwIkHY8j9NQTa73-1).
+
+### `Socket-programming`
+This directory contains two files that communicate with each other, one is a server, and the other is a socket. One sends author information, and the other receives it and replies.
+
+## Testing
+
+### Web-basics
+- Test it with the Live Server extension in VS Code.
+
+### Web-beginner
+- Test it with the Live Server extension in VS Code.
+
+### Movie Knight
+There are two ways to test it (first needs node modules installed in `service` and `vite-react-app` directories):
+1. Test it by starting the Node server with `node restServer.js` in the right directory. After that, run `npm run build` in the `vite-react-app` directory.
+2. Test it with one command, run `npm run start-movie-app` in the root directory.
+
+### Socket
+- Start the two files with commands: `node nameOfTheFile` in the specific directory.
